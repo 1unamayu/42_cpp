@@ -1,78 +1,147 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 19:09:18 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/22 19:13:17 by xamayuel         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "Contact.hpp"
 
-// Default constructor for Contact class
-Contact::Contact(void) {}
-
-// Destructor for Contact class
-Contact::~Contact(void) {}
-
-void Contact::copyContactInfo(Contact source)
+Contact::Contact(void)
 {
-	firstName = source.getFirstName();
-	lastName = source.getLastName();
-	nickname = source.getNickname();
-	phoneNumber = source.getPhoneNumber();
-	secret = source.getSecret();
 }
 
-void Contact::setFirstName(std::string newFirstName)
+Contact::~Contact(void)
 {
-	firstName = newFirstName;
 }
 
-void Contact::setLastName(std::string newLastName)
+int		is_digit(std::string str)
 {
-	lastName = newLastName;
+	int i = 0;
+	while (str[i])
+	{
+		if (!std::isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void Contact::setNickname(std::string newNickname)
+void	Contact::setFirstName(void)
 {
-	nickname = newNickname;
+	std::string firstName;
+
+	while (1)
+	{
+		std::cout << "Enter first name: ";
+		if (!std::getline(std::cin, firstName))
+			break;
+		if (firstName.length() > 0)
+		{
+			this->_firstName = firstName;
+			break ;
+		}
+		std::cout << "First name cannot be empty" << std::endl;
+	}
 }
 
-void Contact::setPhoneNumber(std::string newPhoneNumber)
+std::string	Contact::getFirstName(void)
 {
-	phoneNumber = newPhoneNumber;
+	return (this->_firstName);
 }
 
-void Contact::setSecret(std::string newSecret)
+void	Contact::setLastName(void)
 {
-	secret = newSecret;
+	std::string lastName;
+
+	while (1)
+	{
+		std::cout << "Enter last name: ";
+		if (!std::getline(std::cin, lastName))
+			break;
+		if (lastName.length() > 0)
+		{
+			this->_lastName = lastName;
+			break ;
+		}
+		std::cout << "Last name cannot be empty" << std::endl;
+	}
 }
 
-std::string Contact::getFirstName(void) const
+std::string	Contact::getLastName(void)
 {
-	return firstName;
+	return this->_lastName;
 }
 
-std::string Contact::getLastName(void) const
+void	Contact::setNickname(void)
 {
-	return lastName;
+	std::string nickname;
+
+	while (1)
+	{
+		std::cout << "Enter nickname: ";
+		if (!std::getline(std::cin, nickname))
+			break;
+		if (nickname.length() > 0)
+		{
+			this->_nickname = nickname;
+			break ;
+		}
+		std::cout << "Nickname cannot be empty" << std::endl;
+	}
 }
 
-std::string Contact::getNickname(void) const
+std::string	Contact::getNickname(void)
 {
-	return nickname;
+	return this->_nickname;
 }
 
-std::string Contact::getPhoneNumber(void) const
+void	Contact::setPhoneNumber(void)
 {
-	return phoneNumber;
+	std::string phoneNumber;
+
+	while (1)
+	{
+		std::cout << "Enter phone number: ";
+		if (!std::getline(std::cin, phoneNumber))
+			break;
+		if (phoneNumber.length() > 0)
+		{
+			this->_phoneNumber = phoneNumber;
+			break ;
+		}
+		else
+			std::cout << "Phone number cannot be empty" << std::endl;
+	}
 }
 
-std::string Contact::getSecret(void) const
+std::string	Contact::getPhoneNumber(void)
 {
-	return secret;
+	return this->_phoneNumber;
+}
+
+void	Contact::setDarkestSecret(void)
+{
+	std::string darkestSecret;
+
+	while (1)
+	{
+		std::cout << "Enter darkest secret: ";
+		if (!std::getline(std::cin, darkestSecret))
+			break;
+		if (darkestSecret.length() > 0)
+		{
+			this->_darkestSecret = darkestSecret;
+			break;
+		}
+		std::cout << "Darkest secret cannot be empty" << std::endl;
+	}
+}
+
+std::string	Contact::getDarkestSecret(void)
+{
+	return this->_darkestSecret;
+}
+
+void	Contact::printContact(void)
+{
+	std::cout << "First name: " << this->_firstName << std::endl;
+	std::cout << "Last name: " << this->_lastName << std::endl;
+	std::cout << "Nickname: " << this->_nickname << std::endl;
+	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
 }

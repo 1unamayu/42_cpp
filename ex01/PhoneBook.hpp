@@ -5,23 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 18:47:02 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/22 18:53:38 by xamayuel         ###   ########.fr       */
+/*   Created: 2024/02/22 20:01:12 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/22 20:01:13 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+# include <iostream>
+# include <iomanip>
+# include "Contact.hpp"
 
 class PhoneBook {
-    public:
-        PhoneBook(void);
-	    ~PhoneBook(void);
-        void add(void);
-	    void search(void) const;
-	    void printInstructions(void) const;
-        
-    private:
-    
+	private:
+		Contact		_contacts[8];
+		int			_index;
+		int			_maxIndex;
+	public:
+		PhoneBook(void);
+		~PhoneBook(void);
+		void		addContact(Contact contact);
+		void		searchContact(void);
+		void		printContacts(void);
 };
+
 #endif

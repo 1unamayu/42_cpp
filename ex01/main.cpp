@@ -5,27 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 18:31:36 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/22 18:46:55 by xamayuel         ###   ########.fr       */
+/*   Created: 2024/02/22 20:01:04 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/22 20:23:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
 
+#include "PhoneBook.hpp"
 
-int main() {
-    std::string userInput;
-    std::cout << "Please enter your input: ";
-    while (std::getline(std::cin, userInput))
-   {
-        if (userInput == "EXIT")
-            break;
-        if (userInput == "ADD")
-            break;
-        if (userInput == "SEARCH")
-            break;
-        std::cout << "Please enter your input: ";
-   }
-    return 0;
+void displayMenu(void)
+{
+    std::cout << "\033[34m╔═══════════════════════════════════════════╗\033[0m" << std::endl;
+    std::cout << "\033[34m║                \033[37mPHONEBOOK\033[34m                  ║ \033[0m" << std::endl;
+    std::cout << "\033[34m╠═══════════════════════════════════════════╣\033[0m" << std::endl;
+	std::cout << "\033[34m║           ADD | SEARCH | EXIT             ║\033[0m " << std::endl;
+	std::cout << "\033[34m╚═══════════════════════════════════════════╝\033[0m" << std::endl;
+	std::cout << "\033[34mEnter a command: \033[0m";
+}
+int		main(void) 
+{
+	PhoneBook	phoneBook;
+	Contact		contact;
+	std::string	input;
+
+	while (1) {
+        displayMenu();
+		if (!std::getline(std::cin, input))
+			break ;
+		if (input == "EXIT")
+			break ;
+		else if (input == "ADD")
+		{
+			contact.setFirstName();
+			contact.setLastName();
+			contact.setNickname();
+			contact.setPhoneNumber();
+			contact.setDarkestSecret();
+			phoneBook.addContact(contact);
+		}
+		else if (input == "SEARCH")
+			phoneBook.searchContact();
+	}
+	return (0);
 }
