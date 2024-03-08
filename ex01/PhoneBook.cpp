@@ -31,7 +31,8 @@ PhoneBook::~PhoneBook(void)
 void	PhoneBook::addContact(Contact contact)
 {
 	this->_contacts[this->_index] = contact;
-	std::cout << "Contact added successfully!" << std::endl << std::endl;
+	std::cout << "\033[2J\033[1;1H"; // Clear the screen
+	std::cout << std::endl << "Contact added successfully!" << std::endl;
 	this->_index++;
 	this->_maxIndex++;
 	if (this->_index == 8)
@@ -50,6 +51,10 @@ void	PhoneBook::printContacts(void)
 		
 	else
 	{
+		std::cout << "\033[2J\033[1;1H"; // Clear the screen
+		std::cout << "\033[34m╔═══════════════════════════════════════════╗\033[0m" << std::endl;
+    	std::cout << "\033[34m║                \033[37mPHONEBOOK\033[34m                  ║ \033[0m" << std::endl;
+    	std::cout << "\033[34m╚═══════════════════════════════════════════╝\033[0m" << std::endl<< std::endl;
 		std::cout << KPUR"╔═══════════════════════════════════════════╗" << std::endl;
 		std::cout << KPUR"║   Index  ║ FirstName║  LastName║ Nickname ║" << std::endl;
 		std::cout << KPUR"╠═══════════════════════════════════════════╣"KNOR << std::endl;
@@ -66,7 +71,7 @@ void	PhoneBook::printContacts(void)
 		{
 			std::cout << std::setw(10) << this->_contacts[i].getFirstName();
 		}
-		std::cout << "│";
+		std::cout << KPUR"│"KNOR;
 		if (this->_contacts[i].getLastName().length() > 10)
 		{
 			std::cout << this->_contacts[i].getLastName().substr(0, 9) << ".";
@@ -75,7 +80,7 @@ void	PhoneBook::printContacts(void)
 		{
 			std::cout << std::setw(10) << this->_contacts[i].getLastName();
 		}
-		std::cout << KPUR"│";
+		std::cout << KPUR"│"KNOR;
 		if (this->_contacts[i].getNickname().length() > 10)
 		{
 			std::cout << this->_contacts[i].getNickname().substr(0, 9) << ".";
@@ -102,7 +107,7 @@ void	PhoneBook::searchContact(void)
 	PhoneBook::printContacts();
 	if (this->_index > 0)
 	{
-		std::cout << "Enter the index of the contact you want to view: ";
+		std::cout << "Enter index contact to visualize: ";
 		if (!std::getline(std::cin, index))
 			return ;
 		while (1)
@@ -111,17 +116,20 @@ void	PhoneBook::searchContact(void)
 			{
 				if (index[0] - '0' <= this->_maxIndex)
 				{
+					std::cout << "\033[2J\033[1;1H"; // Clear the screen
 					this->_contacts[index[0] - '1'].printContact();
 					break ;
 				}
 				else
 				{
+					std::cout << "\033[2J\033[1;1H"; // Clear the screen
 					std::cout << KRED"Contact does not exist!"KNOR << std::endl << std::endl;
 					break ;
 				}
 			}
 			else
 			{
+				std::cout << "\033[2J\033[1;1H"; // Clear the screen
 				std::cout << KRED"Invalid index!"KNOR << std::endl << std::endl;
 				break ;
 			}

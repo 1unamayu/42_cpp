@@ -1,6 +1,8 @@
 
 #include "Contact.hpp"
 
+#define KYEL "\033[0;33m"
+#define KNOR "\033[0;37m"
 Contact::Contact(void)
 {
 }
@@ -27,7 +29,7 @@ void	Contact::setFirstName(void)
 
 	while (1)
 	{
-		std::cout << "\033[0;32mEnter first name: \033[0;37m";
+		std::cout << "\033[0;32m    Enter first name: \033[0;37m";
 		if (!std::getline(std::cin, firstName))
 			break;
 		if (firstName.length() > 0)
@@ -50,7 +52,7 @@ void	Contact::setLastName(void)
 
 	while (1)
 	{
-		std::cout << "\033[0;32mEnter last name: \033[0;37m";
+		std::cout << "\033[0;32m     Enter last name: \033[0;37m";
 		if (!std::getline(std::cin, lastName))
 			break;
 		if (lastName.length() > 0)
@@ -73,7 +75,7 @@ void	Contact::setNickname(void)
 
 	while (1)
 	{
-		std::cout << "\033[0;32mEnter nickname: \033[0;37m";
+		std::cout << "\033[0;32m      Enter nickname: \033[0;37m";
 		if (!std::getline(std::cin, nickname))
 			break;
 		if (nickname.length() > 0)
@@ -96,7 +98,7 @@ void	Contact::setPhoneNumber(void)
 
 	while (1)
 	{
-		std::cout << "\033[0;32mEnter phone number: \033[0;37m";
+		std::cout << "\033[0;32m  Enter phone number: \033[0;37m";
 		if (!std::getline(std::cin, phoneNumber))
 			break;
 		if (phoneNumber.length() > 0)
@@ -137,11 +139,22 @@ std::string	Contact::getDarkestSecret(void)
 	return this->_darkestSecret;
 }
 
+static void displayMenuVisualize(void)
+{
+    std::cout << "\033[2J\033[1;1H"; // Clear the screen
+    std::cout << "\033[34m╔═══════════════════════════════════════════╗\033[0m" << std::endl;
+    std::cout << "\033[34m║                \033[37mPHONEBOOK\033[34m                  ║ \033[0m" << std::endl;
+    std::cout << "\033[34m╠═══════════════════════════════════════════╣\033[0m" << std::endl;
+	std::cout << "\033[34m║                  CONTACT                  ║\033[0m " << std::endl;
+	std::cout << "\033[34m╚═══════════════════════════════════════════╝\033[0m" << std::endl;
+
+}
 void	Contact::printContact(void)
 {
-	std::cout << "First name: " << this->_firstName << std::endl;
-	std::cout << "Last name: " << this->_lastName << std::endl;
-	std::cout << "Nickname: " << this->_nickname << std::endl;
-	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
-	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
+	displayMenuVisualize();
+	std::cout << KYEL"    First name: "KNOR << this->_firstName << std::endl;
+	std::cout << KYEL"     Last name: "KNOR << this->_lastName << std::endl;
+	std::cout << KYEL"      Nickname: "KNOR << this->_nickname << std::endl;
+	std::cout << KYEL"  Phone number: "KNOR << this->_phoneNumber << std::endl;
+	std::cout << KYEL"Darkest secret: "KNOR << this->_darkestSecret << std::endl;
 }
