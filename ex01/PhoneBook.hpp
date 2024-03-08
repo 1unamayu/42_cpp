@@ -30,5 +30,4 @@ class PhoneBook {
 		void		searchContact(void);
 		void		printContacts(void);
 };
-
 #endif

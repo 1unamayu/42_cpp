@@ -13,23 +13,18 @@
 
 #include "PhoneBook.hpp"
 
-void displayMenu(void)
-{
-    std::cout << "\033[34m╔═══════════════════════════════════════════╗\033[0m" << std::endl;
-    std::cout << "\033[34m║                \033[37mPHONEBOOK\033[34m                  ║ \033[0m" << std::endl;
-    std::cout << "\033[34m╠═══════════════════════════════════════════╣\033[0m" << std::endl;
-	std::cout << "\033[34m║           ADD | SEARCH | EXIT             ║\033[0m " << std::endl;
-	std::cout << "\033[34m╚═══════════════════════════════════════════╝\033[0m" << std::endl;
-	std::cout << "\033[34mEnter a command: \033[0m";
-}
+static void displayMenu(void);
+
 int		main(void) 
 {
 	PhoneBook	phoneBook;
 	Contact		contact;
 	std::string	input;
 
+	
 	while (1) {
-        displayMenu();
+        
+		displayMenu();
 		if (!std::getline(std::cin, input))
 			break ;
 		if (input == "EXIT")
@@ -45,6 +40,18 @@ int		main(void)
 		}
 		else if (input == "SEARCH")
 			phoneBook.searchContact();
+		else
+			std::cout << "Invalid command" << std::endl;
 	}
 	return (0);
+}
+static void displayMenu(void)
+{
+	
+    std::cout << "\033[34m╔═══════════════════════════════════════════╗\033[0m" << std::endl;
+    std::cout << "\033[34m║                \033[37mPHONEBOOK\033[34m                  ║ \033[0m" << std::endl;
+    std::cout << "\033[34m╠═══════════════════════════════════════════╣\033[0m" << std::endl;
+	std::cout << "\033[34m║           ADD | SEARCH | EXIT             ║\033[0m " << std::endl;
+	std::cout << "\033[34m╚═══════════════════════════════════════════╝\033[0m" << std::endl;
+	std::cout << "\033[37mEnter a command: \033[0m";
 }

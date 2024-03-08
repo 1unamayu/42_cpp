@@ -27,7 +27,7 @@ void	Contact::setFirstName(void)
 
 	while (1)
 	{
-		std::cout << "Enter first name: ";
+		std::cout << "\033[0;32mEnter first name: \033[0;37m";
 		if (!std::getline(std::cin, firstName))
 			break;
 		if (firstName.length() > 0)
@@ -35,7 +35,7 @@ void	Contact::setFirstName(void)
 			this->_firstName = firstName;
 			break ;
 		}
-		std::cout << "First name cannot be empty" << std::endl;
+		std::cout << "\033[0;31mFirst name cannot be empty.\033[0;37m" << std::endl;
 	}
 }
 
@@ -50,7 +50,7 @@ void	Contact::setLastName(void)
 
 	while (1)
 	{
-		std::cout << "Enter last name: ";
+		std::cout << "\033[0;32mEnter last name: \033[0;37m";
 		if (!std::getline(std::cin, lastName))
 			break;
 		if (lastName.length() > 0)
@@ -58,7 +58,7 @@ void	Contact::setLastName(void)
 			this->_lastName = lastName;
 			break ;
 		}
-		std::cout << "Last name cannot be empty" << std::endl;
+		std::cout << "\033[0;31mLast name cannot be empty.\033[0;37m" << std::endl;
 	}
 }
 
@@ -73,7 +73,7 @@ void	Contact::setNickname(void)
 
 	while (1)
 	{
-		std::cout << "Enter nickname: ";
+		std::cout << "\033[0;32mEnter nickname: \033[0;37m";
 		if (!std::getline(std::cin, nickname))
 			break;
 		if (nickname.length() > 0)
@@ -81,7 +81,7 @@ void	Contact::setNickname(void)
 			this->_nickname = nickname;
 			break ;
 		}
-		std::cout << "Nickname cannot be empty" << std::endl;
+		std::cout << "\033[0;31mNickname cannot be empty.\033[0;37m" << std::endl;
 	}
 }
 
@@ -96,7 +96,7 @@ void	Contact::setPhoneNumber(void)
 
 	while (1)
 	{
-		std::cout << "Enter phone number: ";
+		std::cout << "\033[0;32mEnter phone number: \033[0;37m";
 		if (!std::getline(std::cin, phoneNumber))
 			break;
 		if (phoneNumber.length() > 0)
@@ -105,7 +105,7 @@ void	Contact::setPhoneNumber(void)
 			break ;
 		}
 		else
-			std::cout << "Phone number cannot be empty" << std::endl;
+			std::cout << "\033[0;31mPhone number cannot be empty.\033[0;37m" << std::endl;
 	}
 }
 
@@ -120,7 +120,7 @@ void	Contact::setDarkestSecret(void)
 
 	while (1)
 	{
-		std::cout << "Enter darkest secret: ";
+		std::cout << "\033[0;32mEnter darkest secret: \033[0;37m";
 		if (!std::getline(std::cin, darkestSecret))
 			break;
 		if (darkestSecret.length() > 0)
@@ -128,7 +128,7 @@ void	Contact::setDarkestSecret(void)
 			this->_darkestSecret = darkestSecret;
 			break;
 		}
-		std::cout << "Darkest secret cannot be empty" << std::endl;
+		std::cout << "\033[0;31mDarkest secret cannot be empty.\033[0;37m" << std::endl;
 	}
 }
 

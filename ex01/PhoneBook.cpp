@@ -13,6 +13,11 @@
 
 #include "PhoneBook.hpp"
 
+#define KPUR "\033[0;35m"
+#define KNOR "\033[0;37m"
+#define KCYA "\033[0;36m"
+#define KRED "\033[0;31m"
+
 PhoneBook::PhoneBook(void)
 {
 	this->_index = 0;
@@ -38,12 +43,21 @@ void	PhoneBook::addContact(Contact contact)
 void	PhoneBook::printContacts(void)
 {
 	int i = 0;
-	std::cout << "*==========*==========*==========*==========*" << std::endl;
-	std::cout << "|   Index  |First Name| Last Name| Nickname |" << std::endl;
-	std::cout << "*==========*==========*==========*==========*" << std::endl;
+	if (this->_index == 0)
+	{
+		std::cout << KRED"No Contacts in PhoneBook!!!!!"KNOR << std::endl;
+	}
+		
+	else
+	{
+		std::cout << KPUR"╔═══════════════════════════════════════════╗" << std::endl;
+		std::cout << KPUR"║   Index  ║ FirstName║  LastName║ Nickname ║" << std::endl;
+		std::cout << KPUR"╠═══════════════════════════════════════════╣"KNOR << std::endl;
+	}
+		
 	while (i < this->_maxIndex)
 	{
-		std::cout << "|        " << i + 1 << " |";
+		std::cout << KPUR"║        "KCYA << i + 1 << KPUR" │"KNOR;
 		if (this->_contacts[i].getFirstName().length() > 10)
 		{
 			std::cout << this->_contacts[i].getFirstName().substr(0, 9) << ".";
@@ -52,7 +66,7 @@ void	PhoneBook::printContacts(void)
 		{
 			std::cout << std::setw(10) << this->_contacts[i].getFirstName();
 		}
-		std::cout << "|";
+		std::cout << "│";
 		if (this->_contacts[i].getLastName().length() > 10)
 		{
 			std::cout << this->_contacts[i].getLastName().substr(0, 9) << ".";
@@ -61,7 +75,7 @@ void	PhoneBook::printContacts(void)
 		{
 			std::cout << std::setw(10) << this->_contacts[i].getLastName();
 		}
-		std::cout << "|";
+		std::cout << KPUR"│";
 		if (this->_contacts[i].getNickname().length() > 10)
 		{
 			std::cout << this->_contacts[i].getNickname().substr(0, 9) << ".";
@@ -70,9 +84,13 @@ void	PhoneBook::printContacts(void)
 		{
 			std::cout << std::setw(10) << this->_contacts[i].getNickname();
 		}
-		std::cout << "|" << std::endl;
-		std::cout << "*==========*==========*==========*==========*" << std::endl;
+		std::cout << KPUR"║" << std::endl;
+		
 		i++;
+		if (i != this->_index)
+			std::cout << "╠══════════│══════════│══════════│══════════╣" << std::endl;
+		else
+			std::cout << "╚═══════════════════════════════════════════╝\033[0m" << std::endl;
 	}
 }
 
@@ -82,28 +100,32 @@ void	PhoneBook::searchContact(void)
 	std::string index;
 
 	PhoneBook::printContacts();
-	std::cout << "Enter the index of the contact you want to view: ";
-	if (!std::getline(std::cin, index))
-		return ;
-	while (1)
+	if (this->_index > 0)
 	{
-		if (index.length() == 1 && index[0] >= '1' && index[0] <= '8')
+		std::cout << "Enter the index of the contact you want to view: ";
+		if (!std::getline(std::cin, index))
+			return ;
+		while (1)
 		{
-			if (index[0] - '0' <= this->_maxIndex)
+			if (index.length() == 1 && index[0] >= '1' && index[0] <= '8')
 			{
-				this->_contacts[index[0] - '1'].printContact();
-				break ;
+				if (index[0] - '0' <= this->_maxIndex)
+				{
+					this->_contacts[index[0] - '1'].printContact();
+					break ;
+				}
+				else
+				{
+					std::cout << KRED"Contact does not exist!"KNOR << std::endl << std::endl;
+					break ;
+				}
 			}
 			else
 			{
-				std::cout << "Contact does not exist!" << std::endl << std::endl;
+				std::cout << KRED"Invalid index!"KNOR << std::endl << std::endl;
 				break ;
 			}
 		}
-		else
-		{
-			std::cout << "Invalid index!" << std::endl << std::endl;
-			break ;
-		}
 	}
+
 }
