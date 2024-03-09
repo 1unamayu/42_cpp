@@ -2,3 +2,4 @@ ex00/megaphone
 ex00/.obj/megaphone.o
 ex01/a.out
 .vscode/
+*.o

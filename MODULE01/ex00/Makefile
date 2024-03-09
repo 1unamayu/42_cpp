@@ -1,6 +1,6 @@
 
-NAME = phonebook
-SRCS     := main.cpp Zombie.cpp newZombie.cpp
+NAME = ex00
+SRCS     := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
 OBJS_PREF:= $(addprefix $(OBJS_DIR),$(OBJS))
@@ -43,3 +43,6 @@ re:     fclean all
 
 author:
 	@echo "Author: $(GREEN)xamayuel$(RESET)"
+
+format:
+	@clang-format -i -style="{UseTab: Always}" *.cpp *.hpp
