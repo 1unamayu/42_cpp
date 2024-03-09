@@ -6,12 +6,12 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/09 08:26:34 by xamayuel          #+#    #+#              #
-#    Updated: 2024/03/09 08:27:53 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/03/09 08:59:30 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
-SRCS     := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+NAME = ex01
+SRCS     := main.cpp Zombie.cpp zombieHorde.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
 OBJS_PREF:= $(addprefix $(OBJS_DIR),$(OBJS))
