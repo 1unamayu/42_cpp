@@ -15,28 +15,29 @@
 
 #include <iostream>
 
-class Contact {
-   private:
-    std::string _firstName;
-    std::string _lastName;
-    std::string _nickname;
-    std::string _phoneNumber;
-    std::string _darkestSecret;
+class Contact
+{
+private:
+  std::string _firstName;     // First name
+  std::string _lastName;      // Last name
+  std::string _nickname;      // Nickname
+  std::string _phoneNumber;   // Phone number
+  std::string _darkestSecret; // Darkest secret
 
-   public:
-    Contact(void);
-    ~Contact(void);
-    void setFirstName(void);
-    void setLastName(void);
-    void setNickname(void);
-    void setPhoneNumber(void);
-    void setDarkestSecret(void);
-    std::string getFirstName(void);
-    std::string getLastName(void);
-    std::string getNickname(void);
-    std::string getPhoneNumber(void);
-    std::string getDarkestSecret(void);
-    void printContact(void);
+public:
+  Contact(void);                      // Constructor
+  ~Contact(void);                     // Destructor
+  void setFirstName(void);            // Set first name
+  void setLastName(void);             // Set last name
+  void setNickname(void);             // Set nickname
+  void setPhoneNumber(void);          // Set phone number
+  void setDarkestSecret(void);        // Set darkest secret
+  std::string getFirstName(void);     // Get first name
+  std::string getLastName(void);      // Get last name
+  std::string getNickname(void);      // Get nickname
+  std::string getPhoneNumber(void);   // Get phone number
+  std::string getDarkestSecret(void); // Get darkest secret
+  void printContact(void);            // Print contact
 };
 
 #endif

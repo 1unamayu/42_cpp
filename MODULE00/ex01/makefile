@@ -43,3 +43,7 @@ re:     fclean all
 
 author:
 	@echo "Author: $(GREEN)xamayuel$(RESET)"
+
+format:
+	@clang-format -i -style="{BasedOnStyle: LLVM,IndentWidth: 2,ColumnLimit: 80,BreakBeforeBraces: Allman,AllowShortFunctionsOnASingleLine: false,IndentCaseLabels: false,KeepEmptyLinesAtTheStartOfBlocks: true,SpaceBeforeParens: false,SpaceInEmptyParentheses: false,SpacesInAngles: false,TabWidth: 2,UseTab: Never}" *.cpp *.hpp
+
