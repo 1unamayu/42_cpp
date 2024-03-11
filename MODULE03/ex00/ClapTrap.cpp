@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/11 17:13:24 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:26:32 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-  (void)rhs;
-  // if ( this != &rhs )
-  //{
-  // this->_value = rhs.getValue();
-  //}
+  std::cout << KBLA "Assign constructor called" KNOR << std::endl;
+  if ( this != &rhs )
+  {
+  this->_name = rhs.getName();
+  this->_hitpoints = rhs.getHit();
+  this->_attackdamage = rhs.getDamage();
+  this->_energy = rhs.getEnergy();
+  }
   return *this;
 }
 // GETTERS
@@ -116,7 +119,7 @@ void ClapTrap::takeDamage(unsigned int amount)
   std::cout << KNOR << " takes ";
   std::cout << KYEL << amount << KNOR << " points of damage!";
   std::cout << std::endl;
-  if ((int)amount < _hitpoints)
+  if (amount < _hitpoints)
     _hitpoints -= amount;
   else
     _hitpoints = 0;
