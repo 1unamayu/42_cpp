@@ -80,11 +80,11 @@ static void displayMenu(void)
 /**
  * @brief Displays the "Add Contact" menu of the phonebook application.
  *
- * This function clears the screen and displays a formatted menu for adding a new contact.
- * The menu uses ANSI escape sequences for color and formatting.
+ * This function clears the screen and displays a formatted menu for adding a
+ * new contact. The menu uses ANSI escape sequences for color and formatting.
  *
- * There are currently no options displayed in this menu. It's likely intended for future functionality 
- * related to adding a contact. 
+ * There are currently no options displayed in this menu. It's likely intended
+ * for future functionality related to adding a contact.
  */
 static void displayMenuAdd(void)
 {
