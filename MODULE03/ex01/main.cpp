@@ -6,30 +6,28 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:24:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 12:11:20 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:40:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// FALTA HACER BUEN MAIN
+#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-
-// FALTA MEJORAR EL MAIN Y COMENTAR TODO
 int main()
 {
-  { // ClapTrap demostration
-    std::cout << "Creating ClapTrap object:" << std::endl;
-    ClapTrap one("Beñat");
-    one.attack("Eneko");
-    one.takeDamage(4);
-    one.beRepaired(3);
-    std::cout << one << std::endl;
-  }
-  { // ScavTrap demostration
-    std::cout << "Creating ScavTrap object:" << std::endl;
-    ScavTrap two("Elian");
-    two.attack("Eneko");
-    two.takeDamage(10);
-    two.beRepaired(4);
-    two.guardGate();
-    std::cout << two;
-  }
+  ClapTrap one("Unai");
+  ClapTrap two("Beñat");
+
+  one.attack("Beñat");
+  two.takeDamage(one.getDamage());
+
+  std::cout << one << std::endl;
+  std::cout << two << std::endl;
+
+  ClapTrap *other = new ClapTrap("Elian");
+  *other = one;
+  std::cout << *other << std::endl;
+  delete other;
+
+  ScavTrap mio("haru");
 }
