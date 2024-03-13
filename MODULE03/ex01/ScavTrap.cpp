@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:21:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 13:39:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:48:47 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,4 @@ void ScavTrap::attack(const std::string &target)
     std::cout << KRED << "ScavTrap " << KCYA << _name << KRED " has no energy!";
     std::cout << std::endl;
   }
-}
-ScavTrap::ScavTrap(std::string name):ClapTrap(name)
-{
-  std::cout << KBLA "ScavTrap constructor called" KNOR << std::endl;
 }
