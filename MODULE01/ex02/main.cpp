@@ -20,7 +20,7 @@
 int main()
 {
   // A string variable initialized to "HI THIS IS BRAIN"
-  std::string str = "HI ";
+  std::string str = "HI THIS IS BRAIN";
 
   // Pointer to the string
   std::string *stringPTR = &str;

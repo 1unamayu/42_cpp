@@ -12,6 +12,16 @@
 
 #include "Zombie.hpp"
 
+/**
+ * @brief Creates a horde of Zombie objects with the specified name for each zombie.
+ *
+ * This function dynamically allocates memory for an array of Zombie objects,
+ * with each zombie having a unique name based on the provided name and an index.
+ *
+ * @param N An integer representing the number of zombies in the horde.
+ * @param name A string representing the base name for the zombies in the horde.
+ * @return A pointer to the array of Zombie objects representing the horde.
+ */
 Zombie *zombieHorde(int N, std::string name)
 {
   Zombie *horde = new Zombie[N];

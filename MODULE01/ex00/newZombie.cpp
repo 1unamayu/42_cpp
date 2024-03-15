@@ -12,6 +12,15 @@
 
 #include "Zombie.hpp"
 
+/**
+ * @brief Creates a new Zombie object with the given name.
+ *
+ * This function dynamically allocates memory for a new Zombie object with the provided name in the
+ * HEAP.
+ *
+ * @param name A string representing the name of the new Zombie.
+ * @return A pointer to the newly created Zombie object.
+ */
 Zombie *newZombie(std::string name)
 {
   Zombie *new_zombie;
