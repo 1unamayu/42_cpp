@@ -14,10 +14,7 @@
 #define HUMANB_HPP
 #include "Weapon.hpp"
 #include <string>
-/**
- * @brief Class representing a human with a name and a weapon
- *
- */
+// CLASS
 class HumanB
 {
 private:
@@ -25,10 +22,10 @@ private:
   Weapon *_weapon;   ///< Pointer to the weapon the human is holding
 
 public:
-  HumanB();                       ///< Default constructor
-  HumanB(std::string name);       ///< Constructor with name parameter
-  ~HumanB();                      ///< Destructor
-  void attack();                  ///< Method for the human to attack
-  void setWeapon(Weapon &weapon); ///< Method to set the weapon for the human
+  HumanB();                       // DEFAULT CONSTRUCTOR
+  HumanB(std::string name);       // CONSTRUCTOR WITH NAME
+  ~HumanB();                      // DESTRUCTOR
+  void attack();                  // METHOD TO ATTACK
+  void setWeapon(Weapon &weapon); // WEAPON SETTER
 };
 #endif

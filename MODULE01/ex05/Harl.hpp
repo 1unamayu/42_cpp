@@ -26,14 +26,14 @@ class Harl
 {
 
 public:
-  Harl();
-  ~Harl();
-  void complain(std::string level);
+  Harl();                           // DEFAULT CONSTRUCTOR
+  ~Harl();                          // DEFAULT DESTRUCTOR
+  void complain(std::string level); // COMPLAIN LEVEL
 
 private:
-  void debug(void);
-  void info(void);
-  void warning(void);
-  void error(void);
+  void debug(void);   // DEBUG FUNCTION
+  void info(void);    // INFO FUNCTION
+  void warning(void); // WARNING FUNCTION
+  void error(void);   // ERROR FUNCTION
 };
 #endif

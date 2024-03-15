@@ -1,7 +1,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
-// Color codes for console output
+// COLORS
 #define KNRM "\x1B[0m"
 #define KRED "\x1B[31m"
 #define KGRN "\x1B[32m"
@@ -14,37 +14,17 @@
 
 static int showError(std::string error);
 static std::string modifyString(std::string &s, std::string &s1, std::string &s2);
-
-
-bool replaceStringInFile(const char *filename, const char *s1, const char *s2)
-{
-  // Open the input file
-  std::ifstream inputFile(filename);
-  // Open the output file
-  std::string outputFilename = std::string(filename) + ".replace";
-  std::ofstream outputFile(outputFilename.c_str());
-
-  if(!outputFile.is_open())
-  {
-    std::cerr << "Error: Unable to create output file." << std::endl;
-    inputFile.close(); // Close the input file
-    return false;
-  }
-  std::string s11 = s1;
-  std::string s22 = s2;
-  // Copy content while replacing s1 with s2
-  std::string line;
-  while(std::getline(inputFile, line))
-  {
-    outputFile << modifyString(line, s11, s22) << std::endl;
-  }
-
-  // Close files
-  inputFile.close();
-  outputFile.close();
-
-  return true;
-}
+bool replaceStringInFile(const char *filename, const char *s1, const char *s2);
+/**
+ * @brief Main function of the program.
+ *
+ * This function serves as the entry point of the program. It takes command line arguments
+ * and performs file operations to replace a specified string with another string in a file.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv An array of C-style strings containing the command-line arguments.
+ * @return Returns 0 upon successful execution, or 1 if an error occurs.
+ */
 int main(int argc, char *argv[])
 {
   if(argc != 4)
@@ -68,30 +48,69 @@ int main(int argc, char *argv[])
   return 0;
 }
 
+/**
+ * @brief Replaces a specified string with another string in a file.
+ *
+ * This function takes a filename and two strings as input, reads the file line by line,
+ * and replaces occurrences of the first string with the second string.
+ *
+ * @param filename The name of the file to perform the string replacement.
+ * @param s1 The string to be replaced.
+ * @param s2 The string to replace with.
+ * @return Returns true if the string replacement is successful, false otherwise.
+ */
+bool replaceStringInFile(const char *filename, const char *s1, const char *s2)
+{
+  std::ifstream inputFile(filename);
+  std::string outputFilename = std::string(filename) + ".replace";
+  std::ofstream outputFile(outputFilename.c_str());
+
+  if(!outputFile.is_open())
+  {
+    std::cerr << "Error: Unable to create output file." << std::endl;
+    inputFile.close();
+    return false;
+  }
+  std::string s11 = s1;
+  std::string s22 = s2;
+  std::string line;
+  while(std::getline(inputFile, line))
+  {
+    outputFile << modifyString(line, s11, s22) << std::endl;
+  }
+
+  inputFile.close();
+  outputFile.close();
+
+  return true;
+}
+/**
+ * @brief Modifies a string by replacing occurrences of a specified substring.
+ *
+ * This function takes a string and two substrings as input, and replaces occurrences
+ * of the first substring with the second substring.
+ *
+ * @param s The string to be modified.
+ * @param s1 The substring to be replaced.
+ * @param s2 The substring to replace with.
+ * @return Returns the modified string.
+ */
 static std::string modifyString(std::string &s, std::string &s1, std::string &s2)
 {
-  // Stores the resultant string
+
   std::string ans = "";
 
-  // Traverse the string s
   for(int i = 0; i < (int)s.length(); i++)
   {
 
     int k = 0;
 
-    // If the first character of
-    // string s1 matches with the
-    // current character in string s
     if(s[i] == s1[k] && i + s1.length() <= s.length())
     {
 
       int j;
-
-      // If the complete string
-      // matches or not
       for(j = i; j < i + (int)s1.length(); j++)
       {
-
         if(s[j] != s1[k])
         {
           break;
@@ -101,33 +120,31 @@ static std::string modifyString(std::string &s, std::string &s1, std::string &s2
           k = k + 1;
         }
       }
-
-      // If complete string matches
-      // then replace it with the
-      // string s2
       if(j == i + (int)s1.length())
       {
         ans.append(s2);
         i = j - 1;
       }
-
-      // Otherwise
       else
       {
         ans.push_back(s[i]);
       }
     }
-
-    // Otherwise
     else
     {
       ans.push_back(s[i]);
     }
   }
-
-  // Print the resultant string
   return ans;
 }
+/**
+ * @brief Displays an error message.
+ *
+ * This function prints an error message to the standard error stream.
+ *
+ * @param error The error message to be displayed.
+ * @return Returns 1 to indicate an error.
+ */
 static int showError(std::string error)
 {
   std::cerr << KRED << error << std::endl;

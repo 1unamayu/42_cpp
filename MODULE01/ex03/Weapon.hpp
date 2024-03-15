@@ -12,7 +12,7 @@
 
 #ifndef WEAPON_HPP
 #define WEAPON_HPP
-// Color codes for console output
+// COLORS
 #define KNRM "\x1B[0m"
 #define KRED "\x1B[31m"
 #define KGRN "\x1B[32m"
@@ -26,23 +26,20 @@
 #include <iostream>
 #include <string>
 
-/**
- * @brief Weapon class representing a weapon with a type
- *
- */
+// WEAPON CLASS
 class Weapon
 {
 private:
   std::string _type; // The type of the weapon
 
 public:
-  Weapon(std::string type); ///< Constructor with type parameter
-  Weapon();                 ///< Default constructor
+  Weapon(std::string type); // CONSTRUCTOR WITH TYPE PARAMETER
+  Weapon();                 // DEFAULT CONSTRUCTOR
 
-  const std::string &getType(); // get the type of the weapon
+  const std::string &getType(); // TYPE GETTER
 
-  void setType(const std::string &type); // set the type of the weapon
+  void setType(const std::string &type); // TYPE SETTER
 
-  ~Weapon(); ///< Destructor
+  ~Weapon(); // DEFAULT DESTRUCTOR
 };
 #endif
