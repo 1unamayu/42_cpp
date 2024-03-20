@@ -185,6 +185,6 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 }
 std::ostream &operator<<(std::ostream &o, Fixed const &fixed)
 {
-  o << KBLU<<fixed.toFloat();
+  o << KBLU << fixed.toFloat();
   return o;
 }
