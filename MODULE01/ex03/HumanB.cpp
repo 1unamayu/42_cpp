@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 10:48:05 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/09 12:19:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:06:16 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,16 @@ void HumanB::attack()
 {
   std::cout << KRED << this->_name << KNRM;
   std::cout << KGRN << " attacks with their " << KNRM;
-  std::cout << KBLU << this->_weapon->getType() << KNRM;
-  std::cout << std::endl;
+  if(this->_weapon == NULL)
+  {
+    std::cout << KBLU << "NOTHING" << KNRM;
+    std::cout << std::endl;
+  }
+  else
+  {
+    std::cout << KBLU << this->_weapon->getType() << KNRM;
+    std::cout << std::endl;
+  }
 }
 
 /**
