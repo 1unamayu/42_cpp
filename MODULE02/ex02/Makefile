@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/09 08:26:34 by xamayuel          #+#    #+#              #
-#    Updated: 2024/03/11 15:00:26 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/03/23 15:46:54 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
 OBJS_PREF:= $(addprefix $(OBJS_DIR),$(OBJS))
 CXX      := c++
-CXXFLAGS := -Wall -Werror -Wextra -std=c++98
+CXXFLAGS := -Wall -Werror -Wextra -pedantic -std=c++98
 RESET			= 	\033[0m
 GREEN 			= 	\033[38;5;46m
 WHITE 			= 	\033[38;5;15m

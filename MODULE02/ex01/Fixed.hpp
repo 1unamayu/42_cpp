@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:24:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/20 19:57:09 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:19:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@
 #define KBLU "\x1B[34m"
 class Fixed
 {
-private:
-  int _fixed_point;           // integer to store fixed-point number
-  static const int _bits = 8; // fractional bits
+  private:
+    int _fixed_point;                     // integer to store fixed-point number
+    static const int _fractionalbits = 8; // fractional bits
 
-public:
-  Fixed();                              // Default constructor
-  Fixed(const Fixed &fixed);            // Copy constructor
-  Fixed(const int value);               // Constant integer constructor
-  Fixed(const float value);             // Constant float constructor
-  ~Fixed();                             // Default destructor
-  Fixed &operator=(const Fixed &fixed); // copy assignment operator overload
-  int getRawBits(void) const;     // function to return the fixed point value
-  void setRawBits(int const raw); // function to set the fixed point value
-  float toFloat(void) const;      // Function to show number as float
-  int toInt(void) const;          // Function to show number as int
+  public:
+    Fixed();                              // Default constructor
+    Fixed(const Fixed &fixed);            // Copy constructor
+    Fixed(const int value);               // Constant integer constructor
+    Fixed(const float value);             // Constant float constructor
+    ~Fixed();                             // Default destructor
+    Fixed &operator=(const Fixed &fixed); // copy assignment operator overload
+    int getRawBits(void) const;     // function to return the fixed point value
+    void setRawBits(int const raw); // function to set the fixed point value
+    float toFloat(void) const;      // Function to show number as float
+    int toInt(void) const;          // Function to show number as int
 };
 std::ostream &operator<<(std::ostream &o, Fixed const &fixed);
 #endif

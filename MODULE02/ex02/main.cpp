@@ -6,13 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/20 20:00:17 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:46:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
-void makeFish(int lineLength);
+void makeBeach(int lineLength);
 void makeHeader(const std::string &moduleText);
 int main(void)
 {
@@ -30,7 +30,19 @@ int main(void)
   std::cout << KCYA << Fixed::max(a, b) << std::endl;
 }
 
-void makeBatman(int lineLength)
+void makeHeader(const std::string &moduleText)
+{
+  int lineLength = moduleText.length() + 2; // Adjust for extra spaces
+
+  std::string line = std::string(lineLength, '-');
+  std::cout << KRED << line << KNOR << std::endl;
+  std::cout << KRED << " " << moduleText << " " << KNOR << std::endl;
+  std::cout << KRED << line << KNOR << std::endl;
+  makeBeach(lineLength);
+  std::cout << KRED << line << KNOR << std::endl;
+}
+
+void makeBeach(int lineLength)
 {
 
   lineLength = lineLength - 30;
@@ -56,15 +68,4 @@ void makeBatman(int lineLength)
   std::cout << std::string(lineLength / 2, ' ')
             << KBLU "    =- =- -=.--" KGRE "\"" << std::endl;
   std::cout << std::endl;
-}
-void makeHeader(const std::string &moduleText)
-{
-  int lineLength = moduleText.length() + 2; // Adjust for extra spaces
-
-  std::string line = std::string(lineLength, '-');
-  std::cout << KRED << line << KNOR << std::endl;
-  std::cout << KRED << " " << moduleText << " " << KNOR << std::endl;
-  std::cout << KRED << line << KNOR << std::endl;
-  makeBatman(lineLength);
-  std::cout << KRED << line << KNOR << std::endl;
 }

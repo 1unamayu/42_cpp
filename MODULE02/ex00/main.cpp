@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/20 19:55:12 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:09:55 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,30 @@ int main(void)
   std::cout << c.getRawBits() << std::endl;
 }
 
-void makeBatman(int lineLength)
+void makeBeach(int lineLength)
 {
   lineLength = lineLength - 30;
-  std::cout<< std::string(lineLength/2, ' ')<< KYEL "          |" << std::endl;
-
-  std::cout<< std::string(lineLength/2, ' ') << KYEL "        \\ _ /" << std::endl;
-  std::cout<< std::string(lineLength/2, ' ') << KYEL "      -= (_) =-" << std::endl;
-  std::cout<< std::string(lineLength/2, ' ') << KYEL "        /   \\     " KGRE "    _\\/_" << std::endl;
-  std::cout<< std::string(lineLength/2, ' ') << KYEL "          |        " KGRE "   //o\\  _\\/_" << std::endl;
-  std::cout<< std::string(lineLength/2, ' ') << KBLU "   _____ _ __ __ ____ _ " KGRE "| __/o\\\\ _" << std::endl;
-
-  std::cout<< std::string(lineLength/2, ' ') << KBLU " =-=-_-__=_-= _=_=-=_" KGRE ",-'|\"'\"\"-|-,_"
+  std::cout << std::string(lineLength / 2, ' ') << KYEL "          |"
             << std::endl;
-  std::cout<< std::string(lineLength/2, ' ') << KBLU "  =- _=-=- -_=-=_" KGRE ",-\"          |" << std::endl;
-  std::cout << std::string(lineLength/2, ' ')<< KBLU "    =- =- -=.--" KGRE "\"" << std::endl;
+
+  std::cout << std::string(lineLength / 2, ' ') << KYEL "        \\ _ /"
+            << std::endl;
+  std::cout << std::string(lineLength / 2, ' ') << KYEL "      -= (_) =-"
+            << std::endl;
+  std::cout << std::string(lineLength / 2, ' ')
+            << KYEL "        /   \\     " KGRE "    _\\/_" << std::endl;
+  std::cout << std::string(lineLength / 2, ' ')
+            << KYEL "          |        " KGRE "   //o\\  _\\/_" << std::endl;
+  std::cout << std::string(lineLength / 2, ' ')
+            << KBLU "   _____ _ __ __ ____ _ " KGRE "| __/o\\\\ _" << std::endl;
+
+  std::cout << std::string(lineLength / 2, ' ')
+            << KBLU " =-=-_-__=_-= _=_=-=_" KGRE ",-'|\"'\"\"-|-,_"
+            << std::endl;
+  std::cout << std::string(lineLength / 2, ' ')
+            << KBLU "  =- _=-=- -_=-=_" KGRE ",-\"          |" << std::endl;
+  std::cout << std::string(lineLength / 2, ' ')
+            << KBLU "    =- =- -=.--" KGRE "\"" << std::endl;
   std::cout << std::endl;
 }
 void makeHeader(const std::string &moduleText)
@@ -53,6 +62,6 @@ void makeHeader(const std::string &moduleText)
   std::cout << KRED << line << KNOR << std::endl;
   std::cout << KRED << " " << moduleText << " " << KNOR << std::endl;
   std::cout << KRED << line << KNOR << std::endl;
-  makeBatman(lineLength);
+  makeBeach(lineLength);
   std::cout << KRED << line << KNOR << std::endl;
 }

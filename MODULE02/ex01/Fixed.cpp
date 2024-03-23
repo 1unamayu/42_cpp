@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:58:50 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/11 14:11:30 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:21:18 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,62 +25,62 @@
 // CLASS FUNCTIONS
 Fixed::Fixed()
 {
-  std::cout << KBLA "Default constructor called" KNOR << std::endl;
-  _fixed_point = 0;
+    std::cout << KBLA "Default constructor called" KNOR << std::endl;
+    _fixed_point = 0;
 }
 Fixed::Fixed(const int value)
 {
-  std::cout << KBLA "Int constructor called" KNOR << std::endl;
-  _fixed_point = value << _bits;
+    std::cout << KBLA "Int constructor called" KNOR << std::endl;
+    _fixed_point = value << _fractionalbits;
 }
 Fixed::Fixed(const float value)
 {
-  std::cout << KBLA "Float constructor called" KNOR << std::endl;
-  _fixed_point = roundf(value * (1 << _bits));
+    std::cout << KBLA "Float constructor called" KNOR << std::endl;
+    _fixed_point = roundf(value * (1 << _fractionalbits));
 }
 Fixed::~Fixed()
 {
-  std::cout << KBLA "Destructor called" KNOR << std::endl;
+    std::cout << KBLA "Destructor called" KNOR << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &fixed)
 {
-  std::cout << KBLA "Copy assignment operator called" KNOR << std::endl;
-  _fixed_point = fixed.getRawBits();
-  return *this;
+    std::cout << KBLA "Copy assignment operator called" KNOR << std::endl;
+    _fixed_point = fixed.getRawBits();
+    return *this;
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-  std::cout << KBLA "Copy constructor called" KNOR << std::endl;
-  *this = fixed;
+    std::cout << KBLA "Copy constructor called" KNOR << std::endl;
+    *this = fixed;
 }
 
 int Fixed::getRawBits(void) const
 {
-  std::cout << KBLA "getRawBits member function called" KNOR << std::endl;
-  return this->_fixed_point;
+    std::cout << KBLA "getRawBits member function called" KNOR << std::endl;
+    return this->_fixed_point;
 }
 
 void Fixed::setRawBits(int const raw)
 {
-  std::cout << KBLA "setRawBits member function called" KNOR << std::endl;
-  _fixed_point = raw;
+    std::cout << KBLA "setRawBits member function called" KNOR << std::endl;
+    _fixed_point = raw;
 }
 
 int Fixed::toInt(void) const
 {
-  return (roundf(toFloat()));
+    return (roundf(toFloat()));
 }
 float Fixed::toFloat(void) const
 {
-  float aux;
+    float aux;
 
-  aux = (float)_fixed_point / (1 << _bits);
-  return aux;
+    aux = (float)_fixed_point / (1 << _fractionalbits);
+    return aux;
 }
 std::ostream &operator<<(std::ostream &o, Fixed const &fixed)
 {
-  o << fixed.toFloat();
-  return o;
+    o << fixed.toFloat();
+    return o;
 }
