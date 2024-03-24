@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/23 14:09:55 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/24 12:35:46 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void makeFish(int lineLength);
 void makeHeader(const std::string &moduleText);
 
+/**
+ * @brief Main function that executes the program.
+ *
+ * @return int
+ */
 int main(void)
 {
   makeHeader("MODULE 01 - ex00 - My First Class in Orthodox Canonical Form");
@@ -28,6 +33,11 @@ int main(void)
   std::cout << c.getRawBits() << std::endl;
 }
 
+/**
+ * @brief Function to create a visual representation of a beach.
+ *
+ * @param lineLength Length of the beach line.
+ */
 void makeBeach(int lineLength)
 {
   lineLength = lineLength - 30;
@@ -54,6 +64,11 @@ void makeBeach(int lineLength)
             << KBLU "    =- =- -=.--" KGRE "\"" << std::endl;
   std::cout << std::endl;
 }
+/**
+ * @brief  Function to create a header with a given text.
+ *
+ * @param moduleText Text of the module.
+ */
 void makeHeader(const std::string &moduleText)
 {
   int lineLength = moduleText.length() + 2; // Adjust for extra spaces

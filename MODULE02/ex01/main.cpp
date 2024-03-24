@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/23 14:27:53 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/24 12:52:05 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 
 void makeHeader(const std::string &moduleText);
 void makeBeach(int lineLength);
+
+/**
+ * @brief Main function that executes the program.
+ *
+ * @return int
+ */
 int main(void)
 {
     makeHeader(
@@ -27,7 +33,7 @@ int main(void)
 
     a = Fixed(1234.4321f);
     std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b <<"--"<< b.getRawBits()<< std::endl;
+    std::cout << "b is " << b << "--" << b.getRawBits() << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
 
@@ -36,7 +42,11 @@ int main(void)
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 }
-
+/**
+ * @brief  Function to create a header with a given text.
+ *
+ * @param moduleText Text of the module.
+ */
 void makeHeader(const std::string &moduleText)
 {
     int lineLength = moduleText.length() + 2; // Adjust for extra spaces
@@ -48,7 +58,11 @@ void makeHeader(const std::string &moduleText)
     makeBeach(lineLength);
     std::cout << KRED << line << KNOR << std::endl;
 }
-
+/**
+ * @brief Function to create a visual representation of a beach.
+ *
+ * @param lineLength Length of the beach line.
+ */
 void makeBeach(int lineLength)
 {
     lineLength = lineLength - 30;
