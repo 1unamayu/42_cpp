@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/23 15:46:42 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:18:07 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(void)
 
   std::cout << KCYA << b << std::endl;
   std::cout << KCYA << Fixed::max(a, b) << std::endl;
+  std::cout << KCYA << Fixed::min(a, b) << std::endl;
 }
 
 void makeHeader(const std::string &moduleText)
