@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:58:50 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/24 12:48:58 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/24 12:55:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void Fixed::setRawBits(int const raw)
  */
 int Fixed::toInt(void) const
 {
-    return (roundf(toFloat()));
+    return _fixed_point >> _fractionalbits;
 }
 /**
  * @brief Convert the fixed-point number to a floating point number

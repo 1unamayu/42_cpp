@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/24 12:52:05 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/24 12:56:21 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(void)
 
     a = Fixed(1234.4321f);
     std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << "--" << b.getRawBits() << std::endl;
+    std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
 
@@ -41,6 +41,11 @@ int main(void)
     std::cout << "b is " << b.toInt() << " as integer" << std::endl;
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
+    a.setRawBits(1);
+    std::cout << "a is " << a << std::endl;
+    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+
 }
 /**
  * @brief  Function to create a header with a given text.
