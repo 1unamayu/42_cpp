@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/25 12:18:07 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:34:26 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int main(void)
   std::cout << KCYA << Fixed::min(a, b) << std::endl;
 }
 
+/**
+ * @brief  Function to create a header with a given text.
+ *
+ * @param moduleText Text of the module.
+ */
 void makeHeader(const std::string &moduleText)
 {
   int lineLength = moduleText.length() + 2; // Adjust for extra spaces
@@ -42,7 +47,11 @@ void makeHeader(const std::string &moduleText)
   makeBeach(lineLength);
   std::cout << KRED << line << KNOR << std::endl;
 }
-
+/**
+ * @brief Function to create a visual representation of a beach.
+ *
+ * @param lineLength Length of the beach line.
+ */
 void makeBeach(int lineLength)
 {
 

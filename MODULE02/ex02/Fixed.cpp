@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:58:50 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/11 16:02:12 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:24:18 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed()
 Fixed::Fixed(const int value)
 {
   std::cout << KBLA "Int constructor called" KNOR << std::endl;
-  _fixed_point = value << _bits;
+  _fixed_point = value << _fractionalbits;
 }
 Fixed::Fixed(const Fixed &fixed)
 {
@@ -32,7 +32,7 @@ Fixed::Fixed(const Fixed &fixed)
 Fixed::Fixed(const float value)
 {
   std::cout << KBLA "Float constructor called" KNOR << std::endl;
-  _fixed_point = roundf(value * (1 << _bits));
+  _fixed_point = roundf(value * (1 << _fractionalbits));
 }
 // DESTRUCTOR
 Fixed::~Fixed()
@@ -86,13 +86,13 @@ void Fixed::setRawBits(int const raw)
 // FLOAT AND INT
 int Fixed::toInt(void) const
 {
-  return (roundf(toFloat()));
+  return _fixed_point >> _fractionalbits;
 }
 float Fixed::toFloat(void) const
 {
   float aux;
 
-  aux = (float)_fixed_point / (1 << _bits);
+  aux = (float)_fixed_point / (1 << _fractionalbits);
   return aux;
 }
 // ARITHMETIC OPERATORS
@@ -116,14 +116,14 @@ Fixed Fixed::operator*(const Fixed &other)
 {
   Fixed out;
 
-  out.setRawBits((_fixed_point * other.getRawBits()) >> _bits);
+  out.setRawBits((_fixed_point * other.getRawBits()) >> _fractionalbits);
   return out;
 }
 Fixed Fixed::operator/(const Fixed &other)
 {
   Fixed out;
 
-  out.setRawBits((_fixed_point << _bits) / other.getRawBits());
+  out.setRawBits((_fixed_point << _fractionalbits) / other.getRawBits());
   return out;
 }
 // INCREMENT/DECREMENT FUNCTIONS

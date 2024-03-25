@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:24:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/20 19:59:13 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:40:19 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 class Fixed
 {
 private:
-  int _fixed_point;           // integer to store fixed-point number
-  static const int _bits = 8; // fractional bits
+  int _fixed_point;                     // integer to store fixed-point number
+  static const int _fractionalbits = 8; // fractional bits
 
 public:
   Fixed();                              // Default constructor
@@ -42,24 +42,24 @@ public:
   ~Fixed();                             // Default destructor
   Fixed &operator=(const Fixed &fixed); // copy assignment operator overload
   // COMPARASION OPERATORS
-  bool operator>(const Fixed &other) const;
-  bool operator>=(const Fixed &other) const;
-  bool operator<(const Fixed &other) const;
-  bool operator<=(const Fixed &other) const;
-  bool operator==(const Fixed &other) const;
-  bool operator!=(const Fixed &other) const;
+  bool operator>(const Fixed &other) const;  // Comparison operator > overload
+  bool operator>=(const Fixed &other) const; // Comparison operator >= overload
+  bool operator<(const Fixed &other) const;  // Comparison operator < overload
+  bool operator<=(const Fixed &other) const; // Comparison operator <= overload
+  bool operator==(const Fixed &other) const; // Comparison operator == overload
+  bool operator!=(const Fixed &other) const; // Comparison operator != overload
   // ARITHMETIC OPERATORS
-  Fixed operator+(const Fixed &other);
-  Fixed operator-(const Fixed &other);
-  Fixed operator*(const Fixed &other);
-  Fixed operator/(const Fixed &other);
+  Fixed operator+(const Fixed &other); // Arithmetic operator + overload
+  Fixed operator-(const Fixed &other); // Arithmetic operator - overload
+  Fixed operator*(const Fixed &other); // Arithmetic operator * overload
+  Fixed operator/(const Fixed &other); // Arithmetic operator / overload
   // INCREMENT/DECREMENT FUNCTIONS
-  Fixed operator+(void) const;
-  Fixed operator-(void) const;
-  Fixed &operator++(void);
-  Fixed operator++(int);
-  Fixed &operator--(void);
-  Fixed operator--(int);
+  Fixed operator+(void) const; // Increment operator + overload
+  Fixed operator-(void) const; // Decrement operator - overload
+  Fixed &operator++(void);     // Increment operator ++ overload
+  Fixed operator++(int);       // Increment operator ++ overload
+  Fixed &operator--(void);     // Decrement operator -- overload
+  Fixed operator--(int);       // Decrement operator -- overload
   // GETTER AND SETTER
   int getRawBits(void) const;     // function to return the fixed point value
   void setRawBits(int const raw); // function to set the fixed point value
@@ -68,10 +68,11 @@ public:
   int toInt(void) const;     // Function to show number as int
 
   // LOGIC FUNCTIONS
-  static const Fixed &min(const Fixed &a, const Fixed &b);
-  static Fixed &min(Fixed &a, Fixed &b);
-  static const Fixed &max(const Fixed &a, const Fixed &b);
-  static Fixed &max(Fixed &a, Fixed &b);
+  static const Fixed &min(const Fixed &a, const Fixed &b); // Logic min function
+  static Fixed &min(Fixed &a, Fixed &b);                   // login min function
+  static const Fixed &max(const Fixed &a, const Fixed &b); // Logic max function
+  static Fixed &max(Fixed &a, Fixed &b);                   // Logic max function
 };
-std::ostream &operator<<(std::ostream &o, Fixed const &fixed);
+std::ostream &operator<<(std::ostream &o,
+                         Fixed const &fixed); // Insertion overload
 #endif
