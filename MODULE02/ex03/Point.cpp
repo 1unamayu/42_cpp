@@ -49,11 +49,13 @@ std::ostream &operator<<(std::ostream &o, Point const &i)
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-Fixed Point::getX() const {
+Fixed Point::getX() const
+{
   return _x;
 }
 
-Fixed Point::getY() const {
+Fixed Point::getY() const
+{
   return _y;
 }
 /* ************************************************************************** */

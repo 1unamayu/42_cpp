@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/25 12:11:08 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:11:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,44 @@
 #include <iostream>
 void makeBeach(int lineLength);
 void makeHeader(const std::string &moduleText);
-bool bsp(Point  a, Point  b, Point c, Point  point) {
-    // Calculate vectors
-    Point  v0 = c;
-    v0 = v0 - a;
-    Point v1 = b;
-    v1 = v1 - a;
-    Point v2 = point;
-    v2 = v2 - a;
 
-    // Compute dot products
-    float dot00 = (v0.getX() * v0.getX() + v0.getY() * v0.getY()).toFloat();
-    float dot01 = (v0.getX() * v1.getX() + v0.getY() * v1.getY()).toFloat();
-    float dot02 = (v0.getX() * v2.getX() + v0.getY() * v2.getY()).toFloat();
-    float dot11 = (v1.getX() * v1.getX() + v1.getY() * v1.getY()).toFloat();
-    float dot12 = (v1.getX() * v2.getX() + v1.getY() * v2.getY()).toFloat();
-
-    // Compute barycentric coordinates
-    float invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
-    float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-    float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
-
-    // Check if point is inside triangle
-    return (u >= 0) && (v >= 0) && (u + v < 1);
-}
 int main(void)
 {
   makeHeader("MODULE 01 - ex03 - BSP (Binary space partitioning)");
-  Point const a  = Point(Fixed(10), Fixed(0));
-  Point const b = Point(Fixed(4), Fixed(0));
-  Point const c = Point(Fixed(0), Fixed(4));
+  Point const a = Point(Fixed(0), Fixed(0));
+  Point const b = Point(Fixed(3), Fixed(0));
+  Point const c = Point(Fixed(0), Fixed(5.5f));
 
-  Point const d = Point(Fixed(2), Fixed(2));
-  bsp(a,b,c,d);
-  
+  std::cout << KGRE "--------" KNOR << std::endl;
+  std::cout << KGRE "TRIANGLE" KNOR << std::endl;
+  std::cout << KGRE "--------" KNOR << std::endl;
+  std::cout << "a = " KBLU << a.getX() << "," << a.getY() << KNOR << std::endl;
+  std::cout << "b = " KBLU << b.getX() << "," << b.getY() << KNOR << std::endl;
+  std::cout << "c = " KBLU << c.getX() << "," << c.getY() << KNOR << std::endl;
+
+  std::cout << "Point 2,2 in triangle? " KRED << bsp(a, b, c, Point(2, 2))
+            << KNOR << std::endl; // false
+  std::cout << "Point 2,0 in triangle? " KRED << bsp(a, b, c, Point(2, 0))
+            << KNOR << std::endl; // false
+  std::cout << "Point 0,2 in triangle? " KRED << bsp(a, b, c, Point(0, 2))
+            << KNOR << std::endl; // false
+  std::cout << "Point 5.55,0 in triangle? " KRED
+            << bsp(a, b, c, Point(5.55f, 0)) << KNOR << std::endl; // false
+  std::cout << "Point 0,5.55 in triangle? " KRED
+            << bsp(a, b, c, Point(0, 5.55f)) << KNOR << std::endl; // false
+
+  std::cout << "Point 2,.1 in triangle? " KGRE << bsp(a, b, c, Point(2, 0.1f))
+            << KNOR << std::endl; // true
+  std::cout << "Point 0.1,2 in triangle? " KGRE << bsp(a, b, c, Point(0.1f, 2))
+            << KNOR << std::endl; // true
+  std::cout << KGRE "-------------" KNOR << std::endl;
+  std::cout << KGRE " NOT TRIANGLE" KNOR << std::endl;
+  std::cout << KGRE "-------------" KNOR << std::endl;
+  std::cout << "a = " KBLU << a.getX() << "," << a.getY() << KNOR << std::endl;
+  std::cout << "b = " KBLU << b.getX() << "," << b.getY() << KNOR << std::endl;
+  std::cout << "c = " KBLU << a.getX() << "," << a.getY() << KNOR << std::endl;
+  std::cout << "Point 0.1,2 in triangle? " KRED << bsp(a, b, a, Point(0.1f, 2))
+            << std::endl; // false
 }
 /**
  * @brief  Function to create a header with a given text.
