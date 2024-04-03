@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/03 12:54:48 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/03 13:19:38 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,31 @@ int main(void)
     std::cout << KCYA << "-----------------------------" << std::endl;
     Fixed const d(4);
     Fixed const e(3.9f);
-	std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
     std::cout << KBLU << "MAX(D,E) = " << Fixed::max(d, e) << std::endl;
     std::cout << KBLU << "MIN(E,D) = " << Fixed::min(e, d) << std::endl;
+
+    std::cout << KCYA << "Comparison operators" << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "a == b = " << (a == b) << std::endl;
+    std::cout << KBLU << "a != b = " << (a != b) << std::endl;
+    std::cout << KBLU << "a <  b = " << (a < b) << std::endl;
+    std::cout << KBLU << "a <= b = " << (a <= b) << std::endl;
+    std::cout << KBLU << "a >  b = " << (a > b) << std::endl;
+    std::cout << KBLU << "a >= b = " << (a >= b) << std::endl;
+
+    std::cout << KBLU << "b <= b = " << (b <= b) << std::endl;
+    std::cout << KBLU << "b >= b = " << (b >= b) << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "c == d = " << (c == d) << std::endl;
+    std::cout << KBLU << "c != d = " << (c != d) << std::endl;
+    std::cout << KBLU << "c <  d = " << (c < d) << std::endl;
+    std::cout << KBLU << "c <= d = " << (c <= d) << std::endl;
+    std::cout << KBLU << "c >  d = " << (c > d) << std::endl;
+    std::cout << KBLU << "c >= d = " << (c >= d) << std::endl;
+
+    std::cout << KBLU << "c <= d = " << (c <= d) << std::endl;
+    std::cout << KBLU << "c >= d = " << (c >= d) << std::endl;
   }
   {
   }
