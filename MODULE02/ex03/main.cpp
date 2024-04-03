@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/27 12:11:10 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:18:58 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int main(void)
   std::cout << "Point 2,.1 in triangle? " KGRE << bsp(a, b, c, Point(2, 0.1f))
             << KNOR << std::endl; // true
   std::cout << "Point 0.1,2 in triangle? " KGRE << bsp(a, b, c, Point(0.1f, 2))
+            << KNOR << std::endl; // true
+  std::cout << "Point 0.01,2 in triangle? " KGRE << bsp(a, b, c, Point(0.01f, 2))
             << KNOR << std::endl; // true
   std::cout << KGRE "-------------" KNOR << std::endl;
   std::cout << KGRE " NOT TRIANGLE" KNOR << std::endl;
