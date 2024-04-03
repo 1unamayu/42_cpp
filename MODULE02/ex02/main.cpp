@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:55:45 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/25 12:34:26 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:54:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,66 @@ void makeBeach(int lineLength);
 void makeHeader(const std::string &moduleText);
 int main(void)
 {
-  makeHeader("MODULE 01 - ex02 - Now we’re talking");
-  Fixed a;
-  Fixed const b(Fixed(5.05f) * Fixed(2));
+  {
+    makeHeader("MODULE 01 - ex02 - Now we’re talking");
+    Fixed a;
+    Fixed const b(Fixed(5.05f) * Fixed(2));
 
-  std::cout << KBLU << a << std::endl;
-  std::cout << KBLU << ++a << std::endl;
-  std::cout << KBLU << a << std::endl;
-  std::cout << KBLU << a++ << std::endl;
-  std::cout << KBLU << a << std::endl;
+    std::cout << KBLU << a << std::endl;
+    std::cout << KBLU << ++a << std::endl;
+    std::cout << KBLU << a << std::endl;
+    std::cout << KBLU << a++ << std::endl;
+    std::cout << KBLU << a << std::endl;
 
-  std::cout << KCYA << b << std::endl;
-  std::cout << KCYA << Fixed::max(a, b) << std::endl;
-  std::cout << KCYA << Fixed::min(a, b) << std::endl;
+    std::cout << KCYA << b << std::endl;
+    std::cout << KCYA << Fixed::max(a, b) << std::endl;
+  }
+  {
+    makeHeader("MODULE 01 - ex02 - Now we’re talking - testing");
+    Fixed a(2);
+    Fixed b(5.0f);
+    Fixed c;
+
+    std::cout << KCYA << "Incremets and decrements test" << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "  a =" << a << std::endl;
+    std::cout << KBLU << "--a =" << --a << std::endl;
+    std::cout << KBLU << "  a =" << a << std::endl;
+    std::cout << KBLU << "a++ =" << a++ << std::endl;
+    std::cout << KBLU << "  a =" << a << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "b   =" << b << std::endl;
+    std::cout << KBLU << "++b =" << ++b << std::endl;
+    std::cout << KBLU << "b   =" << b << std::endl;
+    std::cout << KBLU << "b-- =" << b-- << std::endl;
+    std::cout << KBLU << "b   =" << b << std::endl;
+    std::cout << KCYA << "Arithmetics operators" << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    c = a + b;
+    std::cout << KBLU << "a + b = " << c << std::endl;
+    c = a - b;
+    std::cout << KBLU << "a - c =" << c << std::endl;
+    c = a * b;
+    std::cout << KBLU << "a * b =" << c << std::endl;
+
+    c = b / a;
+    std::cout << KBLU << "b / a =" << c << std::endl;
+    c = a / b;
+    std::cout << KBLU << "a / b =" << c << std::endl;
+
+    std::cout << KCYA << "Maximum and minimum" << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "MAX(A,B) = " << Fixed::max(a, b) << std::endl;
+    std::cout << KBLU << "MIN(A,B) = " << Fixed::min(a, b) << std::endl;
+    std::cout << KCYA << "-----------------------------" << std::endl;
+    Fixed const d(4);
+    Fixed const e(3.9f);
+	std::cout << KCYA << "-----------------------------" << std::endl;
+    std::cout << KBLU << "MAX(D,E) = " << Fixed::max(d, e) << std::endl;
+    std::cout << KBLU << "MIN(E,D) = " << Fixed::min(e, d) << std::endl;
+  }
+  {
+  }
 }
 
 /**
