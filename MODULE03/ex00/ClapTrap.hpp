@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:15:14 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/11 17:16:35 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:28:57 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 // INCLUDES
 #include <iostream>
 // COLORS
+// COLORS
 #define KRED "\033[0;31m"
+#define KGRE "\033[0;32m"
+#define KYEL "\033[0;33m"
+#define LBLU "\033[0;34m"
 #define KPUR "\033[0;35m"
 #define KNOR "\033[0;37m"
 #define KCYA "\033[0;36m"
-#define KRED "\033[0;31m"
-#define KYEL "\033[0;33m"
+
 #define KBLA "\033[0;30m"
 #define KBLU "\x1B[34m"
 // CLASS

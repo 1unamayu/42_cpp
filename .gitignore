@@ -4,9 +4,11 @@ ex01/a.out
 .vscode/
 *.o
 MODULE00/ex00/megaphone
-MODULE03/ex02/ex01
-MODULE01/ex04/ex04
-MODULE01/ex04/ex04
+ex01
+ex04
+
 MODULE02/ex01/main.cpp
+ex03
 MODULE02/ex03/ex03
-MODULE02/ex03/ex03
+ex00
+ex02

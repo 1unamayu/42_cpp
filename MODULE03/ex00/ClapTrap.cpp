@@ -46,12 +46,12 @@ ClapTrap::~ClapTrap()
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
   std::cout << KBLA "Assign constructor called" KNOR << std::endl;
-  if ( this != &rhs )
+  if(this != &rhs)
   {
-  this->_name = rhs.getName();
-  this->_hitpoints = rhs.getHit();
-  this->_attackdamage = rhs.getDamage();
-  this->_energy = rhs.getEnergy();
+    this->_name = rhs.getName();
+    this->_hitpoints = rhs.getHit();
+    this->_attackdamage = rhs.getDamage();
+    this->_energy = rhs.getEnergy();
   }
   return *this;
 }
@@ -108,18 +108,18 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (_hitpoints == 0)
-    {
-         std::cout << KRED << "ClapTrap " << KCYA << _name
+  if(_hitpoints == 0)
+  {
+    std::cout << KRED << "ClapTrap " << KCYA << _name
               << KRED "is already dead!";
     std::cout << std::endl;
     return;
-    }
+  }
   std::cout << "ClapTrap " << KBLU << this->_name;
   std::cout << KNOR << " takes ";
   std::cout << KYEL << amount << KNOR << " points of damage!";
   std::cout << std::endl;
-  if (amount < _hitpoints)
+  if(amount < _hitpoints)
     _hitpoints -= amount;
   else
     _hitpoints = 0;
