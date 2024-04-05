@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/05 10:24:52 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:55:30 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+ClapTrap::ClapTrap()
+{
+  std::cout << KBLA "ClapTrap default constructor called" KNOR << std::endl;
+  _name = "";
+  _attackdamage = 0;
+  _energy = 10;
+  _hitpoints = 10;
+}
 ClapTrap::ClapTrap(const std::string name)
 {
   std::cout << KBLA "ClapTrap constructor called" KNOR << std::endl;
@@ -27,7 +35,7 @@ ClapTrap::ClapTrap(const std::string name)
 ClapTrap::ClapTrap(const ClapTrap &src)
 {
   *this = src;
-  std::cout << KBLA "Copy constructor called" KNOR << std::endl;
+  std::cout << KBLA "ClapTrap Copy constructor called" KNOR << std::endl;
 }
 
 /*
@@ -36,7 +44,8 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 
 ClapTrap::~ClapTrap()
 {
-  std::cout << KBLA "ClapTrap destructor called" KNOR << std::endl;
+  std::cout << KBLA "ClapTrap " << this->_name << " destructor called" KNOR
+            << std::endl;
 }
 
 /*
@@ -45,7 +54,7 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-  std::cout << KBLA "Assign constructor called" KNOR << std::endl;
+  std::cout << KBLA "ClapTrap Assign constructor called" KNOR << std::endl;
   if(this != &rhs)
   {
     this->_name = rhs.getName();
@@ -135,7 +144,7 @@ void ClapTrap::takeDamage(unsigned int amount)
   if(_hitpoints == 0)
   {
     std::cout << KRED << "ClapTrap " << KCYA << _name
-              << KRED "is already dead!";
+              << KRED " is already dead!";
     std::cout << std::endl;
     return;
   }
@@ -169,6 +178,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << std::endl;
     return;
   }
+
   std::cout << KNOR << "ClapTrap " << KBLU << _name << KNOR " heals ";
   std::cout << KYEL << amount << KNOR " HP!";
   std::cout << std::endl;

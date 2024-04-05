@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:24:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/04 12:55:37 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:11:35 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,52 @@ void makeHeader(const std::string &moduleText);
 void makeDolphin(int lineLength);
 int main()
 {
-	makeHeader("MODULE 03 - ex01 - Serena, my love!");
-  ClapTrap one("Unai");
-  ClapTrap two("Beñat");
+  {
+    makeHeader("MODULE 03 - ex01 - Serena, my love!");
+    std::cout << KNOR "-- Constructors --" << std::endl;
+    ScavTrap one("Unai");
+    ScavTrap two("Beñat");
 
-  one.attack("Beñat");
-  two.takeDamage(one.getDamage());
+    std::cout << std::endl << KNOR "-- Actions --" << std::endl;
+    one.attack("Beñat");
+    two.takeDamage(one.getDamage());
+    std::cout << one << std::endl;
+    std::cout << two << std::endl;
+    one.beRepaired(2);
+    std::cout << one << std::endl;
+    two.takeDamage(9);
+    std::cout << two << std::endl;
 
-  std::cout << one << std::endl;
-  std::cout << two << std::endl;
+    std::cout << KNOR "-- New and copy --" << std::endl;
+    ScavTrap *other = new ScavTrap("Elian");
+    *other = one;
+    std::cout << *other << std::endl;
 
-  ClapTrap *other = new ClapTrap("Elian");
-  *other = one;
-  std::cout << *other << std::endl;
-  delete other;
+    std::cout << KNOR "-- Default constructor --" << std::endl;
+    ScavTrap three;
+    std::cout << std::endl << KNOR "-- Guard Keeper --" << std::endl;
+    one.guardGate();
+    std::cout << KNOR "-- Destructors --" << std::endl;
+    delete other;
+  }
+  {
+    makeHeader("MODULE 03 - ex01 - Serena, my love!");
+    std::cout << std::endl << KNOR "-- Demostrate ClapTrap --" << std::endl;
+    std::cout << "Creating ClapTrap object:" << std::endl;
+    ClapTrap claptrap("CL4P-TP");
+    claptrap.attack("Bandit");
+    claptrap.takeDamage(5);
+    claptrap.beRepaired(3);
 
-  ScavTrap mio("haru");
+    std::cout << KNOR "-- Demostrate ScavTrap --" << std::endl;
+    std::cout << "Creating ScavTrap object:" << std::endl;
+    ScavTrap scavtrap("SC4V-TP");
+    scavtrap.attack("Bandit");
+    scavtrap.takeDamage(10);
+    scavtrap.beRepaired(5);
+    scavtrap.guardGate();
+	std::cout << std::endl<< KNOR "-- Destructors --" << std::endl;
+  }
 }
 /**
  * @brief  Function to create a header with a given text.

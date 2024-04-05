@@ -6,24 +6,30 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:21:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 13:48:47 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:06:11 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-
+ScavTrap::ScavTrap() : ClapTrap()
+{
+  std::cout << KBLA "ScavTrap " << this->_name << " constructed!" KNOR
+            << std::endl;
+  _attackdamage = 20;
+  _energy = 50;
+}
 // DEFAULT CONSTRUCTOR
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
-  std::cout << KBLA"ScavTrap " << name << " constructed!" KNOR<< std::endl;
+  std::cout << KBLA "ScavTrap " << name << " constructed!" KNOR << std::endl;
   _attackdamage = 20;
   _energy = 50;
 }
 // COPY CONSTRUCTOR
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
-  std::cout << KBLA "ScavTrap " << _name << " copied!" KNOR<< std::endl;
+  std::cout << KBLA "ScavTrap " << _name << " copied!" KNOR << std::endl;
 }
 
 // COPY ASSIGNMENT
@@ -32,13 +38,13 @@ ScavTrap & ::ScavTrap::operator=(const ScavTrap &other)
   if(this != &other)
   {
     ClapTrap::operator=(other);
-    std::cout << KBLA"ScavTrap " << _name << " assigned!" KNOR << std::endl;
+    std::cout << KBLA "ScavTrap " << _name << " assigned!" KNOR << std::endl;
   }
   return *this;
 }
 void ScavTrap::guardGate(void)
 {
-  std::cout << "ScavTrap " KBLU<< _name << KNOR" is now in Gatekeeper mode!"
+  std::cout << "ScavTrap " KBLU << _name << KNOR " is now in Gatekeeper mode!"
             << std::endl;
 }
 
@@ -61,7 +67,7 @@ void ScavTrap::attack(const std::string &target)
   if(_hitpoints == 0)
   {
     std::cout << KRED << "ScavTrap " << KCYA << _name
-              << KRED "is already dead!";
+              << KRED " is already dead!";
     std::cout << std::endl;
   }
   if(_energy == 0)

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:24:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/05 10:27:38 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:33:16 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void makeDolphin(int lineLength);
 int main()
 {
   makeHeader("MODULE 03 - ex00 - Aaaaand... OPEN!");
-  std::cout << "-- Constructors --" << std::endl;
+  std::cout << KNOR "-- Constructors --" << std::endl;
   ClapTrap one("Unai");
   ClapTrap two("Beñat");
 
-  std::cout << "-- Actions --" << std::endl;
+  std::cout << std::endl << KNOR "-- Actions --" << std::endl;
   one.attack("Beñat");
   two.takeDamage(one.getDamage());
   std::cout << one << std::endl;
@@ -31,11 +31,15 @@ int main()
   std::cout << one << std::endl;
   two.takeDamage(9);
   std::cout << two << std::endl;
-  
-  std::cout << "-- New and copy --" << std::endl;
+
+  std::cout << KNOR "-- New and copy --" << std::endl;
   ClapTrap *other = new ClapTrap("Elian");
   *other = one;
   std::cout << *other << std::endl;
+
+  std::cout << KNOR "-- Default constructor --" << std::endl;
+  ClapTrap three;
+  std::cout << KNOR "-- Destructors --" << std::endl;
   delete other;
 }
 

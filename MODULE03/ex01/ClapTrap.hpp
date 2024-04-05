@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:15:14 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 13:44:20 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:45:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,22 @@ protected:
   unsigned int _energy;
   unsigned int _attackdamage;
 
-public:
-  ClapTrap(std::string name);    // CONSTRUCTOR
-  ClapTrap(ClapTrap const &src); // COPY CONSTRUCTOR
-  ~ClapTrap();                   // DESTRUCTOR
-  // GETTER ANS SETTER
-  std::string getName(void) const;
-  int getHit(void) const;
-  int getEnergy(void) const;
-  int getDamage(void) const;
-  // OPERATOR
+public:                                     // CANONICAL
+  ClapTrap();                               // DEFAULT CONSTRUCTOR
+  ClapTrap(std::string name);               // CONSTRUCTOR
+  ClapTrap(ClapTrap const &src);            // COPY CONSTRUCTOR
   ClapTrap &operator=(ClapTrap const &rhs); // OPERATOR
-  // REALISTIC FUNCTIONS
-  void attack(const std::string &target);
-  void takeDamage(unsigned int amount);
-  void beRepaired(unsigned int amount);
+  ~ClapTrap();                              // DESTRUCTOR
+public:                                     // GETTER ANS SETTER
+  std::string getName(void) const;          // NAME GETTER
+  int getHit(void) const;                   // HIT GETTER
+  int getEnergy(void) const;                // ENERGY GETTER
+  int getDamage(void) const;                // DAMAGE GETTER
+
+public:                                   // FUNCTIONS
+  void attack(const std::string &target); // ATTACK FUNCTION
+  void takeDamage(unsigned int amount);   // DAMAGE FUNCTION
+  void beRepaired(unsigned int amount);   // REPAIR FUNCTION
 };
 std::ostream &operator<<(std::ostream &o, ClapTrap const &i);
 #endif
