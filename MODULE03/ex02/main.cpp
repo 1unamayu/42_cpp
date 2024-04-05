@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:24:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/05 12:30:03 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:47:45 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void makeDolphin(int lineLength);
 int main()
 {
   {
-    makeHeader("MODULE 03 - ex01 - Serena, my love!");
+    makeHeader("MODULE 03 - ex02 - Repetitive work ");
     std::cout << KNOR "-- Constructors --" << std::endl;
     FragTrap one("Unai");
     FragTrap two("Beñat");
