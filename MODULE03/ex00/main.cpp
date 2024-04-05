@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:24:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/04 14:33:01 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:27:38 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@ void makeDolphin(int lineLength);
 int main()
 {
   makeHeader("MODULE 03 - ex00 - Aaaaand... OPEN!");
+  std::cout << "-- Constructors --" << std::endl;
   ClapTrap one("Unai");
   ClapTrap two("Beñat");
 
+  std::cout << "-- Actions --" << std::endl;
   one.attack("Beñat");
   two.takeDamage(one.getDamage());
-
   std::cout << one << std::endl;
   std::cout << two << std::endl;
-
+  one.beRepaired(2);
+  std::cout << one << std::endl;
+  two.takeDamage(9);
+  std::cout << two << std::endl;
+  
+  std::cout << "-- New and copy --" << std::endl;
   ClapTrap *other = new ClapTrap("Elian");
   *other = one;
   std::cout << *other << std::endl;
