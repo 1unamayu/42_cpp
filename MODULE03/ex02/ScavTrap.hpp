@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:20:18 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 12:05:06 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:53:14 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 class ScavTrap : public ClapTrap
 {
 public:
+  ScavTrap();
   ScavTrap(const std::string &name);          // Default constructor
   ScavTrap(const ScavTrap &other);            // Copy constructor
   ScavTrap &operator=(const ScavTrap &other); // Copy assignment operator

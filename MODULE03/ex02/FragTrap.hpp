@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:28:38 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 12:41:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:26:23 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 class FragTrap : public ClapTrap
 {
+private:
+  FragTrap();
+
 public:
   FragTrap(const std::string &name);          // CONSTRUCTOR
   FragTrap(const FragTrap &other);            // COPY CONSTRUCTOR

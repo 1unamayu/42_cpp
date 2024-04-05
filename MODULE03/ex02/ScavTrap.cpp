@@ -6,17 +6,23 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:21:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 12:09:35 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:06:11 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() : ClapTrap()
+{
+  std::cout << KBLA "ScavTrap " << this->_name << " constructed!" KNOR
+            << std::endl;
+  _attackdamage = 20;
+  _energy = 50;
+}
 // DEFAULT CONSTRUCTOR
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
   std::cout << KBLA "ScavTrap " << name << " constructed!" KNOR << std::endl;
-  _hitpoints = 100;
   _attackdamage = 20;
   _energy = 50;
 }
@@ -61,7 +67,7 @@ void ScavTrap::attack(const std::string &target)
   if(_hitpoints == 0)
   {
     std::cout << KRED << "ScavTrap " << KCYA << _name
-              << KRED "is already dead!";
+              << KRED " is already dead!";
     std::cout << std::endl;
   }
   if(_energy == 0)

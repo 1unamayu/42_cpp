@@ -6,15 +6,23 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:34:05 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/13 12:46:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:27:19 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() : ClapTrap()
+{
+  std::cout << KBLA "FragTrap " << this->_name << " constructed!" KNOR
+            << std::endl;
+  _hitpoints = 100;
+  _attackdamage = 30;
+  _energy = 100;
+}
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
-  std::cout << KBLA "ScavTrap " << name << " constructed!" KNOR << std::endl;
+  std::cout << KBLA "FragTrap " << name << " constructed!" KNOR << std::endl;
   _hitpoints = 100;
   _attackdamage = 30;
   _energy = 100;
@@ -42,6 +50,9 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuy()
 {
-  std::cout << "FragTrap " << _name
-            << " requests a high five! Up top, fellow human!" << std::endl;
+  if(_hitpoints)
+  {
+    std::cout << "FragTrap " KBLU << _name << KNOR
+              << " requests a high five! Up top, fellow human!" << std::endl;
+  }
 }
