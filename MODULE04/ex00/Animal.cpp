@@ -7,13 +7,13 @@
 Animal::Animal()
 {
   type = "Animal";
-  std::cout << KBLA "Animal.Default constructor called" KNOR << std::endl;
+  std::cout << KBLA "ANIMAL.Default constructor called" KNOR << std::endl;
 }
 
 Animal::Animal(const Animal &src)
 {
   type = src.type;
-  std::cout << KBLA "Animal.Copy constructor called" KNOR << std::endl;
+  std::cout << KBLA "ANIMAL.Copy constructor called" KNOR << std::endl;
 }
 
 /*
@@ -31,7 +31,7 @@ Animal::~Animal()
 
 Animal &Animal::operator=(Animal const &rhs)
 {
-  std::cout << KBLA "Animal.Copy assignment constructor called" KNOR
+  std::cout << KBLA "ANIMAL.Copy assignment constructor called" KNOR
             << std::endl;
   if(this != &rhs)
   {

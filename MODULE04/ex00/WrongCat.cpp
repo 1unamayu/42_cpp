@@ -6,7 +6,7 @@
 
 WrongCat::WrongCat()
 {
-  std::cout << KBLA "CAT.Default constructor called" KNOR << std::endl;
+  std::cout << KBLA "WRONGCAT.Default constructor called" KNOR << std::endl;
   type = "WrongCat";
 }
 
