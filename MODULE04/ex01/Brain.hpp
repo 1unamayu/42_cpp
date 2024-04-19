@@ -19,9 +19,9 @@ public:
   Brain();
   Brain(Brain const &src);
   ~Brain();
-
   Brain &operator=(Brain const &rhs);
 
+public: // ESTO??
   std::string ideas[100];
 };
 

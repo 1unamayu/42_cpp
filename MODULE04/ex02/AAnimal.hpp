@@ -13,20 +13,19 @@
 #define KYEL "\033[0;33m"
 #define KBLA "\033[0;30m"
 #define KBLU "\x1B[34m"
-
+#define KGRE "\033[0;32m"
 class AAnimal
 {
 
 public:
-  
-  virtual ~AAnimal();                    // DESTRUCTOR
+  virtual ~AAnimal(); // DESTRUCTOR
 
-  std::string getType() const;    // GETTER
-  virtual void makeSound() const; // METHOD MAKESOUND
+  std::string getType() const;        // GETTER
+  virtual void makeSound() const = 0; // METHOD MAKESOUND
 
 protected:
-  std::string type; // TYPE
-  AAnimal();                             // DEFAULTL CONSTRUCTOR
+  std::string type;                       // TYPE
+  AAnimal();                              // DEFAULTL CONSTRUCTOR
   AAnimal(AAnimal const &src);            // COPY CONSTRUCTOR
   AAnimal &operator=(AAnimal const &rhs); // COPY CONSTRUCTOR
 };

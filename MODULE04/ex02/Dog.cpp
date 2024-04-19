@@ -57,11 +57,13 @@ void Dog::makeSound() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-void Dog::setIdea(std::string idea, int index){
+void Dog::setIdea(std::string idea, int index)
+{
   this->_brain->ideas[index] = idea;
 }
 
-std::string Dog::getIdea(int index){
+std::string Dog::getIdea(int index)
+{
   return (this->_brain->ideas[index]);
 }
 /* ************************************************************************** */

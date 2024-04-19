@@ -14,7 +14,7 @@ Cat::Cat()
 Cat::Cat(const Cat &src) : AAnimal()
 {
   std::cout << KBLA "CAT.Copy constructor called" KNOR << std::endl;
-   _brain = new Brain(*src._brain);
+  _brain = new Brain(*src._brain);
   type = src.type;
 }
 
@@ -60,11 +60,13 @@ void Cat::makeSound() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-void Cat::setIdea(std::string idea, int index){
+void Cat::setIdea(std::string idea, int index)
+{
   this->_brain->ideas[index] = idea;
 }
 
-std::string Cat::getIdea(int index){
+std::string Cat::getIdea(int index)
+{
   return (this->_brain->ideas[index]);
 }
 /* ************************************************************************** */

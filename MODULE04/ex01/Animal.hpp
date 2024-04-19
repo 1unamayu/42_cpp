@@ -13,7 +13,7 @@
 #define KYEL "\033[0;33m"
 #define KBLA "\033[0;30m"
 #define KBLU "\x1B[34m"
-
+#define KGRE "\033[0;32m"
 class Animal
 {
 
