@@ -7,13 +7,13 @@
 WrongAnimal::WrongAnimal()
 {
   type = "Animal";
-  std::cout << KBLA "WRONGANIMAL:Default constructor called" KNOR << std::endl;
+  std::cout << KBLA "WRONGANIMAL.Default constructor called" KNOR << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
   type = src.type;
-  std::cout << KBLA "WRONGANIMAL:Copy constructor called" KNOR << std::endl;
+  std::cout << KBLA "WRONGANIMAL.Copy constructor called" KNOR << std::endl;
 }
 
 /*

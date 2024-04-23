@@ -6,12 +6,13 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 10:43:27 by xamayuel          #+#    #+#              #
-#    Updated: 2024/03/18 11:48:39 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/04/23 15:46:22 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME = ex00
+SRCS_DIR = src
+INC_DIR = inc
 SRCS     := main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
