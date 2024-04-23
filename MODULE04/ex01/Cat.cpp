@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/23 16:47:27 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/04/23 17:44:30 by xamayuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cat.hpp"
 
 /*
@@ -38,6 +50,7 @@ Cat &Cat::operator=(Cat const &rhs)
   if(this != &rhs)
   {
     this->type = rhs.getType();
+	*(this->_brain) = *(rhs._brain);
   }
   return *this;
 }
@@ -60,13 +73,8 @@ void Cat::makeSound() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-void Cat::setIdea(std::string idea, int index)
+Brain *Cat::getBrain(void) const
 {
-  this->_brain->ideas[index] = idea;
-}
-
-std::string Cat::getIdea(int index)
-{
-  return (this->_brain->ideas[index]);
+	return (this->_brain);
 }
 /* ************************************************************************** */

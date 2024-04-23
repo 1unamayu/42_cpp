@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/23 16:47:20 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/04/23 16:47:21 by xamayuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Brain.hpp"
 
 /*
@@ -18,7 +30,7 @@ Brain::Brain(const Brain &src)
   std::cout << KBLA "BRAIN:Default constructor called" KNOR << std::endl;
   for(int i = 0; i < 100; i++)
   {
-    ideas[i] = src.ideas[i];
+    ideas[i] = src.getIdeas(i);
   }
 }
 
@@ -39,9 +51,9 @@ Brain &Brain::operator=(Brain const &rhs)
 {
   std::cout << KBLA "BRAIN:Copy assignment constructor called" KNOR
             << std::endl;
-  if(this != &rhs)
+  for(int i = 0; i < 100; i++)
   {
-    this->ideas[0] = rhs.ideas[0];
+    ideas[i] = rhs.getIdeas(i);
   }
   return *this;
 }
@@ -50,7 +62,7 @@ std::ostream &operator<<(std::ostream &o, Brain const &i)
 {
   for(int j = 0; j < 100; j++)
   {
-    o << "Idea " << j << " = " << i.ideas[j] << std::endl;
+    o << "Idea " << j << " = " << i.getIdeas(j) << std::endl;
   }
 
   return o;
@@ -63,3 +75,15 @@ std::ostream &operator<<(std::ostream &o, Brain const &i)
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+std::string Brain::getIdeas(int n) const
+{
+  return (this->ideas[n]);
+}
+
+void Brain::setIdeas(std::string idea, int n)
+{
+  if(n < 0 || n > 100)
+    std::cout << "error. Brain's array size is 100." << std::endl;
+  else
+    this->ideas[n] = idea;
+}

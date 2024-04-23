@@ -6,13 +6,13 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 10:43:27 by xamayuel          #+#    #+#              #
-#    Updated: 2024/03/18 16:20:27 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/04/23 17:55:06 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = ex02
-SRCS     := main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRCS     := main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
 OBJS_PREF:= $(addprefix $(OBJS_DIR),$(OBJS))

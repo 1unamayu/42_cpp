@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:42:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/19 18:43:03 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:50:57 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,82 @@
 #include "Dog.hpp"
 #include <iomanip>
 #define SIZE 100
-
 void makeHeader(const std::string &moduleText);
 void makeDolphin(int lineLength);
 int main()
 {
   {
-    makeHeader("MODULE04 - ex02 Abstract class");
-    // AAnimal animal;
-    AAnimal *zoo[10];
+    makeHeader("MODULE 04 - ex01 - I don't want to set the world on fire");
+  }
+  {
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+    std::cout << KCYA "               SUBJECT TEST (OK) " KNOR << std::endl;
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+    const Animal *j = new Dog();
+    const Animal *i = new Cat();
 
-    for(int i = 0; i < 10; i++)
-    {
-      if(i % 2 == 0)
-        zoo[i] = new Dog();
-      else
-        zoo[i] = new Cat();
-    }
-
-    for(int i = 0; i < 10; i++)
-      zoo[i]->makeSound();
-
-    for(int i = 0; i < 10; i++)
-      delete zoo[i];
-
-    const AAnimal *j = new Dog();
-    const AAnimal *i = new Cat();
-
-    delete j; // should not create a leak
+    delete j;
     delete i;
   }
   {
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+    std::cout << KCYA "               ARRAY TEST  " KNOR << std::endl;
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+    std::string str;
+    Animal *meta[10];
+
+    for(int i = 0; i < 10; i++)
+    {
+      if(i % 2)
+      {
+        meta[i] = new Dog();
+      }
+      else
+      {
+        meta[i] = new Cat();
+      }
+    }
+    std::cout << std::endl;
+
+    for(size_t i = 0; i < 10; i++)
+    {
+      delete meta[i];
+    }
+    std::cout << std::endl;
+  }
+  {
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+    std::cout << KCYA "               DEEP COPY TEST  " KNOR << std::endl;
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
+	
+	std::string str;
+	Dog *d = new Dog();
+	Dog *d2 = new Dog();
+	std::cout << std::endl;
+	str = d->getBrain()->getIdeas(0);
+	std::cout << "Dog1's first idea is "<< str << std::endl;
+
+	d->getBrain()->setIdeas("Vamos al parque", 0);
+	str = d->getBrain()->getIdeas(0);
+	std::cout << "Dog1's first idea is "<< str << std::endl;
+
+	*d2 = *d;
+	str = d2->getBrain()->getIdeas(0);
+	std::cout << "Dog2's first idea is "<< str << std::endl;
+
+	std::cout << std::endl;
+	delete d;
+	d = NULL;
+	delete d2;
+	d2 = NULL;
+  }
+   {
     std::cout << KBLU
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
               << std::endl;
@@ -54,28 +99,28 @@ int main()
               << std::endl;
 
     Dog haru;
-    haru.setIdea("Vamos al parque", 0);
-    haru.setIdea("Quiero jugar", 1);
+    haru.getBrain()->setIdeas("Vamos al parque", 0);
+    haru.getBrain()->setIdeas("Quiero jugar", 1);
 
     Dog gohan(haru);
-    gohan.setIdea("Quiero dormir", 1);
+    gohan.getBrain()->setIdeas("Quiero dormir", 1);
 
-    std::cout << "Haru's 1st idea: " << haru.getIdea(0) << std::endl;
-    std::cout << "Haru's 2nd idea: " << haru.getIdea(1) << std::endl;
-    std::cout << "Gohan's 1st idea: " << gohan.getIdea(0) << std::endl;
-    std::cout << "Gohan's 2nd idea: " << gohan.getIdea(1) << std::endl;
+    std::cout << "Haru's 1st idea: " << haru.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Haru's 2nd idea: " << haru.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Gohan's 1st idea: " << gohan.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Gohan's 2nd idea: " << gohan.getBrain()->getIdeas(1) << std::endl;
 
     Cat covi;
-    covi.setIdea("Vamos a Bilbao", 0);
-    covi.setIdea("Quiero comer", 1);
+    covi.getBrain()->setIdeas("Vamos a Bilbao", 0);
+    covi.getBrain()->setIdeas("Quiero comer", 1);
 
     Cat shiba(covi);
-    shiba.setIdea("Quiero saltar", 1);
+    shiba.getBrain()->setIdeas("Quiero saltar", 1);
 
-    std::cout << "Covi's 1st idea: " << covi.getIdea(0) << std::endl;
-    std::cout << "Covi's 2nd idea: " << covi.getIdea(1) << std::endl;
-    std::cout << "Shiba's 1st idea: " << shiba.getIdea(0) << std::endl;
-    std::cout << "Shiba's 2nd idea: " << shiba.getIdea(1) << std::endl;
+    std::cout << "Covi's 1st idea: " << covi.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Covi's 2nd idea: " << covi.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Shiba's 1st idea: " << shiba.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Shiba's 2nd idea: " << shiba.getBrain()->getIdeas(1) << std::endl;
   }
 }
 

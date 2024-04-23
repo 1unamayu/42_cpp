@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/23 16:47:35 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/04/23 17:44:13 by xamayuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
 
 /*
@@ -37,6 +49,7 @@ Dog &Dog::operator=(Dog const &rhs)
   if(this != &rhs)
   {
     this->type = rhs.getType();
+	*(this->_brain) = *(rhs._brain);
   }
   return *this;
 }
@@ -57,13 +70,8 @@ void Dog::makeSound() const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-void Dog::setIdea(std::string idea, int index)
+Brain *Dog::getBrain(void) const
 {
-  this->_brain->ideas[index] = idea;
-}
-
-std::string Dog::getIdea(int index)
-{
-  return (this->_brain->ideas[index]);
+	return (this->_brain);
 }
 /* ************************************************************************** */
