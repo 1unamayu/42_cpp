@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:48:04 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/23 16:48:04 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:22:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ class Dog : public Animal
 {
 
 public:
-  Dog();
-  Dog(Dog const &src);
-  ~Dog();
+  Dog();               // DEFAULT CONSTRUCTOR
+  Dog(Dog const &src); // COPY CONSTRUCTOR
+  ~Dog();              // DEFAULT DESTRUCTOR
 
-  Dog &operator=(Dog const &rhs);
-  void makeSound() const;
+  Dog &operator=(Dog const &rhs); // COPY ASSIGNMENT CONSTURCTOR
+  void makeSound() const;         // MAKE SOUND METHOD
 
 private:
 };

@@ -24,9 +24,12 @@ int main()
     makeHeader("MODULE 04 - ex00 - Polymorphism");
   }
   {
-    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << KNOR << std::endl;
+    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              << KNOR << std::endl;
     std::cout << KCYA "               SUBJECT TEST (OK) " KNOR << std::endl;
-    std::cout << KCYA "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR << std::endl;
+    std::cout << KCYA
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
+              << std::endl;
     const Animal *meta = new Animal();
     const Animal *j = new Dog();
     const Animal *i = new Cat();
@@ -45,9 +48,13 @@ int main()
     delete i;
   }
   {
-    std::cout << KRED "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR << std::endl;
+    std::cout << KRED
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
+              << std::endl;
     std::cout << KRED "           WRONGANIMAL TEST (LEAKS) " KNOR << std::endl;
-    std::cout << KRED "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR << std::endl;
+    std::cout << KRED
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
+              << std::endl;
 
     const WrongAnimal *w_animal = new WrongAnimal();
     const WrongAnimal *w_cat = new WrongCat();
@@ -64,9 +71,14 @@ int main()
     delete w_animal;
   }
   {
-    std::cout << KRED "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR << std::endl;
-    std::cout << KRED "           WRONGANIMAL TEST (NO POINTER) " KNOR << std::endl;
-    std::cout << KRED "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR << std::endl;
+    std::cout << KRED
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
+              << std::endl;
+    std::cout << KRED "           WRONGANIMAL TEST (NO POINTER) " KNOR
+              << std::endl;
+    std::cout << KRED
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" KNOR
+              << std::endl;
 
     WrongAnimal w_animal;
     WrongCat w_cat;
@@ -103,7 +115,7 @@ void makeHeader(const std::string &moduleText)
 void makeDolphin(int lineLength)
 {
 
-  lineLength = lineLength +30;
+  lineLength = lineLength + 30;
   std::cout << KGRE << " " << std::endl;
   std::cout << KGRE << "                         _.--._ " << std::endl;
   std::cout << KGRE << "        .-\"|~~\"-.  ../\" __.-`\boo.. " << std::endl;
@@ -143,7 +155,8 @@ void makeDolphin(int lineLength)
             << std::endl;
   std::cout << KGRE << " |HHHHHH|       `r;  /.  ^   _;---; `.  \\    |HHHHHH|"
             << std::endl;
-  std::cout << KGRE << " |HHHHHH|        \\ \\|{*}_,--'    /    /\"'`-._|HHHHHH|"
+  std::cout << KGRE
+            << " |HHHHHH|        \\ \\|{*}_,--'    /    /\"'`-._|HHHHHH|"
             << std::endl;
   std::cout << KGRE << "  |HHHHHH|        \\ V\\,'        |    ( ,'| |||HHHHH| "
             << std::endl;

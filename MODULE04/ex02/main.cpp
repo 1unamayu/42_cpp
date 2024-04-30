@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:42:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/23 17:50:57 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:11:51 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,12 @@ int main()
     std::cout << "Shiba's 1st idea: " << shiba.getBrain()->getIdeas(0) << std::endl;
     std::cout << "Shiba's 2nd idea: " << shiba.getBrain()->getIdeas(1) << std::endl;
   }
+  // Animal can not be instantiated
+  /*
+  {
+	Animal test;
+  }
+  */
 }
 
 /**

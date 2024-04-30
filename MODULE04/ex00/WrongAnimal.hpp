@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:48:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/23 16:48:18 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:22:50 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ class WrongAnimal
 {
 
 public:
-  WrongAnimal();
-  WrongAnimal(WrongAnimal const &src);
-  ~WrongAnimal();
+  WrongAnimal();                       // DEFAULT CONSTRUCTOR
+  WrongAnimal(WrongAnimal const &src); // COPY CONSTRUCTOR
+  ~WrongAnimal();                      // DEFAULT DESTRUCTOR
 
   WrongAnimal &operator=(WrongAnimal const &rhs);
   std::string getType() const; // GETTER
   void makeSound() const;      // METHOD MAKESOUND
 
 protected:
-  std::string type;
+  std::string type; // TYPE
 };
 
 std::ostream &operator<<(std::ostream &o, WrongAnimal const &i);

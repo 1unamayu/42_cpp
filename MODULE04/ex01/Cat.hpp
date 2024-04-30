@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:47:31 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/23 17:40:46 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:20:40 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 public:
   Cat();               // DEFAULT CONSTRUCTOR
   Cat(Cat const &src); // COPY CONSTRUCTOR
-  ~Cat();              // DEFAULT CONSTRUCTOR
+  ~Cat();              // DEFAULT DESTRUCTOR
 
   Cat &operator=(Cat const &rhs); // COPY ASSIGNMENT CONSTURCTOR
   void makeSound() const;         // MAKE SOUND METHOD

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:48:24 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/04/23 16:48:24 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:23:23 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ class WrongCat : public WrongAnimal
 {
 
 public:
-  WrongCat();
-  WrongCat(WrongCat const &src);
-  ~WrongCat();
+  WrongCat();                    // DEFAULT CONSTRUCTOR
+  WrongCat(WrongCat const &src); // COPY CONSTRUCTOR
+  ~WrongCat();                   // DEFAULT DESTRUCTOR
 
-  WrongCat &operator=(WrongCat const &rhs);
-  void makeSound() const;
+  WrongCat &operator=(WrongCat const &rhs); // COPY ASSIGNMENT CONSTURCTOR
+  void makeSound() const;                   // MAKE SOUND METHOD
 };
 
 std::ostream &operator<<(std::ostream &o, WrongCat const &i);
