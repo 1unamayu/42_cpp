@@ -7,6 +7,13 @@ class Form;
 #include "Bureaucrat.hpp"
 class Form
 {
+  private:
+    const std::string _name;
+    bool _signed;
+    const int _gradeToSign;
+    const int _gradeToExcecute;
+    Form();
+
   public:
     Form(std::string const name, int toSign, int toExecute);
     Form(Form const &src);
@@ -15,10 +22,12 @@ class Form
     Form &operator=(Form const &rhs);
     class GradeTooHighException : public std::exception
     {
+      public:
         virtual const char *what() const throw();
     };
     class GradeTooLowException : public std::exception
     {
+      public:
         virtual const char *what() const throw();
     };
     void beSigned(Bureaucrat const &bure);
@@ -26,13 +35,7 @@ class Form
     int getGradeToSign(void) const;
     int getGradeToExecute(void) const;
     bool isSigned(void) const;
-
-  private:
-    Form();
-    std::string _name;
-    bool _signed;
-    int const _gradeToSign;
-    int const _gradeToExcecute;
+    std::string getName(void) const;
 };
 
 std::ostream &operator<<(std::ostream &o, Form const &i);

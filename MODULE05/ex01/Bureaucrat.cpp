@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -7,6 +8,20 @@
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 {
     std::cout << KBLA "BUREAUCRAT.Default constructor called" KNOR << std::endl;
+    if(grade < 1)
+    {
+        grade = 1;
+        std::cout << KBLA
+            "BUREAUCRAT.Constructor Grade too low. Grade set to 1" KNOR
+                  << std::endl;
+    }
+    if(grade > 150)
+    {
+        grade = 150;
+        std::cout << KBLA
+            "BUREAUCRAT.Consturctor Grade too high. Grade set to 150"
+                  << std::endl;
+    }
     _grade = grade;
 }
 
@@ -43,9 +58,9 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &i)
 {
 
-    o << KCYA << std::setw(10) << i.getName() << KNOR ": bureaucrat grade "
-      << KBLU << i.getGrade();
-    o << KNOR << std::endl;
+    o << KCYA << std::setw(19) << std::right << i.getName()
+      << KNOR ": bureaucrat grade " << KBLU << i.getGrade();
+    o << KNOR;
     return o;
 }
 
@@ -65,10 +80,20 @@ void Bureaucrat::decrementGrade()
         throw Bureaucrat::GradeTooHighException();
 }
 
-void signForm(Form &form)
+void Bureaucrat::signForm(Form &form)
 {
-    (void)form;
-    std::cout << "hola" << std::endl;
+    if(form.getGradeToSign() >= this->getGrade())
+    {
+
+        std::cout << KBLU << "<" << this->getName() << "> signs <"
+                  << form.getName() << ">" << KNOR << std::endl;
+    }
+    else
+        std::cout << KRED << "<" << this->getName() << "> cannot sign <"
+                  << form.getName()
+                  << "> because <the bureaucrat's grade is lower than the "
+                     "form's grade to sign>"
+                  << KNOR << std::endl;
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
@@ -87,11 +112,11 @@ int Bureaucrat::getGrade() const
 */
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return "BureaucratException: Grade too High";
+    return SUBR "BureaucratException" KRED ": " NEGR "Grade too High" KNOR;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return "BureaucratException: Grade too Low";
+    return SUBR "BureaucratException" KRED ": " NEGR "Grade too Low" KNOR;
 }
 /* ************************************************************************** */

@@ -15,8 +15,11 @@
 
 #define KBLA "\033[0;30m"
 #define KBLU "\x1B[34m"
-class Bureaucrat;
-#include "Form.hpp"
+#define SUBR "\033[0;31m\033[4m"
+#define NEGR "\033[0;31m\033[1m"
+
+class Form;
+
 class Bureaucrat
 {
 
@@ -25,10 +28,17 @@ class Bureaucrat
     Bureaucrat(Bureaucrat const &src);
     virtual ~Bureaucrat();
     Bureaucrat &operator=(Bureaucrat const &rhs);
+
+  public:
     int getGrade() const;
     std::string getName() const;
     void incrementGrade();
     void decrementGrade();
+
+  public:
+    void signForm(Form &form);
+
+  public:
     class GradeTooHighException : public std::exception
     {
         virtual const char *what() const throw();
@@ -37,7 +47,6 @@ class Bureaucrat
     {
         virtual const char *what() const throw();
     };
-    void signForm(Form &form);
 
   private:
     const std::string _name;
