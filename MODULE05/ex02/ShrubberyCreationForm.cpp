@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:09:59 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/08/11 18:36:05 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/08/11 19:13:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     std::cout << "ShrubberyCreationForm execute called" << std::endl;
-    std::cout << "ShrubberyCreationForm getSigned: " << this->getSigned()
-              << std::endl;
+    
     if(this->getSigned() == false)
         throw AForm::NotSignedException();
     if(executor.getGrade() > this->getGradeToExecute())
@@ -55,6 +54,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
     if(!file.is_open())
         throw AForm::FileException();
+
 
     file << "    ccee88oo" << std::endl;
     file << "  C8O8O8Q8PoOb o8oo" << std::endl;
