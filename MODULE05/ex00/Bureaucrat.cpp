@@ -10,7 +10,8 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
   if(grade < 1)
   {
     grade = 1;
-    std::cout << KBLA "BUREAUCRAT.Constructor Grade too low. Grade set to 1" KNOR
+    std::cout << KBLA
+        "BUREAUCRAT.Constructor Grade too low. Grade set to 1" KNOR
               << std::endl;
   }
   if(grade > 150)

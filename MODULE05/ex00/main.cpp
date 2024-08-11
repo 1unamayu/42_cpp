@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:42:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/05/02 16:52:38 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/08/11 17:00:35 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void makeHeader(const std::string &moduleText);
 void makeFish(int lineLength);
-// FALTA HACER MAIN
+
 int main()
 {
 
@@ -68,7 +68,8 @@ int main()
   }
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  std::cout << " Trying to create wrong bureaucrats (xabier 0 ; Unai 151) " << std::endl;
+  std::cout << " Trying to create wrong bureaucrats (xabier 0 ; Unai 151) "
+            << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
   Bureaucrat bure3("Xabier", 0);

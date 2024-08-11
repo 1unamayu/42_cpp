@@ -20,8 +20,8 @@ Form::Form(std::string const name, int toSign, int toExecute)
 }
 
 Form::Form(const Form &src)
-    : _signed(src._signed), _name(src._name),
-      _gradeToExcecute(src._gradeToExcecute), _gradeToSign(src._gradeToSign)
+    : _name(src._name), _gradeToSign(src._gradeToSign),
+      _gradeToExcecute(src._gradeToExcecute), _signed(src._signed)
 {
 }
 
