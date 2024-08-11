@@ -20,6 +20,7 @@ class Form
     ~Form();
 
     Form &operator=(Form const &rhs);
+    
     class GradeTooHighException : public std::exception
     {
       public:

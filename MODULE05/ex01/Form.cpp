@@ -107,4 +107,19 @@ std::string Form::getName(void) const
 {
     return (_name);
 }
+/*
+** --------------------------------- EXCEPTIONS-------------------------------
+*/
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return ("Grade is too high");
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return ("Grade is too low");
+}
+
+
 /* ************************************************************************** */
