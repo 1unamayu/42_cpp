@@ -6,13 +6,15 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 19:23:00 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/08/11 20:38:16 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:13:12 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <iomanip>
 #include <string>
+
+// Static member variables initialization
 
 std::string ScalarConverter::_literal;
 char ScalarConverter::_char;
@@ -21,11 +23,13 @@ float ScalarConverter::_float;
 double ScalarConverter::_double;
 bool ScalarConverter::_pseudoliteral;
 
+//Default constructor
 ScalarConverter::ScalarConverter()
 {
   std::cout << KBLA "ScalarConverter constructor called" KNOR << std::endl;
 }
 
+// Destructor
 ScalarConverter::~ScalarConverter()
 {
   std::cout << KBLA "ScalarConverter destructor called" KNOR << std::endl;
