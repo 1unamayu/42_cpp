@@ -50,8 +50,8 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
               << std::endl;
 }
 
-AForm *		PresidentialPardonForm::getCopy( void )const
+AForm *PresidentialPardonForm::getCopy(void) const
 {
-	AForm* copy = new PresidentialPardonForm(*this);
-	return (copy);
+    AForm *copy = new PresidentialPardonForm(*this);
+    return (copy);
 }

@@ -69,8 +69,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
     file << "   .....//||||\\...." << std::endl;
     file.close();
 }
-AForm *		ShrubberyCreationForm::getCopy( void )const
+AForm *ShrubberyCreationForm::getCopy(void) const
 {
-	AForm* copy = new ShrubberyCreationForm(*this);
-	return (copy);
+    AForm *copy = new ShrubberyCreationForm(*this);
+    return (copy);
 }

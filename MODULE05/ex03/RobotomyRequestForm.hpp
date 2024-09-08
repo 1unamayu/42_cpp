@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:07:11 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/08/11 18:59:50 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/09/08 23:06:19 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class RobotomyRequestForm : public AForm
 {
   public:
     RobotomyRequestForm(std::string target);
-    ~RobotomyRequestForm(void);
+    virtual ~RobotomyRequestForm(void);
     RobotomyRequestForm(const RobotomyRequestForm &other);
 
     RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
@@ -29,7 +29,7 @@ class RobotomyRequestForm : public AForm
     std::string const &getTarget(void) const;
 
     void execute(Bureaucrat const &executor) const;
-    virtual  AForm* getCopy(void) const;
+    virtual AForm *getCopy(void) const;
 
   private:
     const std::string _target;

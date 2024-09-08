@@ -70,8 +70,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
         std::cout << this->_target << " robotomy failed." << std::endl;
 }
 
-AForm *		RobotomyRequestForm::getCopy( void )const
+AForm *RobotomyRequestForm::getCopy(void) const
 {
-	AForm* copy = new RobotomyRequestForm(*this);
-	return (copy);
+    AForm *copy = new RobotomyRequestForm(*this);
+    return (copy);
 }

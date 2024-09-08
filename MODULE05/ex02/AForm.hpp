@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:07:14 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/08/11 18:07:15 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/09/08 22:48:07 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class AForm
   public:
     AForm(std::string name, const int gradeToSign, const int gradeToExecute);
     AForm(AForm const &src);
-    ~AForm(void);
+    virtual ~AForm(void);
 
     AForm &operator=(AForm const &rhs);
 

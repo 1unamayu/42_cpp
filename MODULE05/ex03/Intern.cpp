@@ -19,7 +19,7 @@ Intern::Intern()
 
 Intern::~Intern()
 {
-    std::cout << KBLA "Intern destructor called" KNOR<< std::endl;
+    std::cout << KBLA "Intern destructor called" KNOR << std::endl;
 }
 
 Intern::Intern(const Intern &other)
@@ -29,25 +29,25 @@ Intern::Intern(const Intern &other)
 
 Intern &Intern::operator=(const Intern &other)
 {
-   (void)other;
-   return *this;
+    (void)other;
+    return *this;
 }
 
-AForm * Intern::makeForm(std::string formName, std::string target)
+AForm *Intern::makeForm(std::string formName, std::string target)
 {
-   ShrubberyCreationForm sh = ShrubberyCreationForm(target);
-   RobotomyRequestForm ro = RobotomyRequestForm(target);
-   PresidentialPardonForm pr = PresidentialPardonForm(target);
+    ShrubberyCreationForm sh = ShrubberyCreationForm(target);
+    RobotomyRequestForm ro = RobotomyRequestForm(target);
+    PresidentialPardonForm pr = PresidentialPardonForm(target);
 
-   AForm* forms[] = {&sh, &ro, &pr};
+    AForm *forms[] = {&sh, &ro, &pr};
 
-   for (int i = 0; i < 3; i++)
-   {
-      if (forms[i]->getName() == formName)
-      {
+    for(int i = 0; i < 3; i++)
+    {
+        if(forms[i]->getName() == formName)
+        {
             std::cout << "Intern creates " << formName << std::endl;
             return (forms[i]->getCopy());
-      }    
-   }
-   return NULL;
+        }
+    }
+    return NULL;
 }
