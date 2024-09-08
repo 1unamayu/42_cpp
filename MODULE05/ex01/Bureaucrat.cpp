@@ -87,6 +87,7 @@ void Bureaucrat::signForm(Form &form)
 
         std::cout << KBLU << "<" << this->getName() << "> signs <"
                   << form.getName() << ">" << KNOR << std::endl;
+        form.beSigned(*this);
     }
     else
         std::cout << KRED << "<" << this->getName() << "> cannot sign <"

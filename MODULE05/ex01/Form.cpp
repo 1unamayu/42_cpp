@@ -121,5 +121,4 @@ const char *Form::GradeTooLowException::what() const throw()
     return ("Grade is too low");
 }
 
-
 /* ************************************************************************** */

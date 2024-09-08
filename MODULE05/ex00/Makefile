@@ -6,11 +6,12 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:42:33 by xamayuel          #+#    #+#              #
-#    Updated: 2024/03/20 16:45:32 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/09/08 22:28:51 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
+
 SRCS     := main.cpp Bureaucrat.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
