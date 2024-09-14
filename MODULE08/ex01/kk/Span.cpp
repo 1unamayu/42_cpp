@@ -75,3 +75,7 @@ const char *	Span::MinException::what() const throw()
 {
 	return ("Min elements needed");
 }
+
+std::vector<int> Span::getNumbers() const {
+    return this->numbers; // Asumiendo que 'numbers' es el vector que almacena los números
+}

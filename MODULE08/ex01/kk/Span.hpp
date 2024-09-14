@@ -19,6 +19,8 @@ public:
     int shortestSpan() const;
     int longestSpan() const;
 
+  
+
     class MaxException : public std::exception
     {
     public:
