@@ -58,6 +58,7 @@ void test_subject_cases() {
         sp.addNumber(11);
         std::cout << "\033[33m";
         std::cout << "Creando un Span del subject. ( 5, 3, 17, 9, 11 )" << std::endl;
+        std::cout << "\033[0m";
         std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
     } catch (const std::exception &e) {
