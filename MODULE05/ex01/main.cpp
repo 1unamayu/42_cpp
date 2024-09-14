@@ -12,6 +12,17 @@
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+void makeHeader(const std::string &moduleText);
+void makeFish(int lineLength);
+void testBureaucratAndForm();
+
+int main()
+{
+    makeHeader("MODULE 05 - Exercise 01 - Form up, maggots!");
+
+    testBureaucratAndForm();
+}
+
 void makeFish(int lineLength)
 {
     lineLength = lineLength - 16;
@@ -53,28 +64,32 @@ void testBureaucratAndForm()
 
     try
     {
+        std::cout  << KYEL <<" Creating a high rank bureaucrat and a low rank bureaucrat" << KNOR << std::endl;
         Bureaucrat highRank("HighRank", 1);
         Bureaucrat lowRank("LowRank", 150);
-        Form easyForm("EasyForm", 150, 150);
-        Form hardForm("HardForm", 1, 1);
+        
 
         std::cout << highRank << std::endl;
         std::cout << lowRank << std::endl;
+        
+        std::cout << KYEL << "Creating two forms, one with high rank and one with low rank" << KNOR << std::endl;
+        Form easyForm("EasyForm", 150, 150);
+        Form hardForm("HardForm", 1, 1);
         std::cout << easyForm << std::endl;
         std::cout << hardForm << std::endl;
 
-        std::cout << KGRE "\nTrying to sign forms:" KNOR << std::endl;
+        std::cout << KYEL "\nTrying to sign forms:" KNOR << std::endl;
         highRank.signForm(easyForm);
         highRank.signForm(hardForm);
         lowRank.signForm(easyForm);
         lowRank.signForm(hardForm);
 
-        std::cout << KGRE "\nForm states after signing attempts:" KNOR
+        std::cout << KYEL "\nForm states after signing attempts:" KNOR
                   << std::endl;
         std::cout << easyForm << std::endl;
         std::cout << hardForm << std::endl;
 
-        std::cout << KGRE "\nTrying to create invalid forms:" KNOR << std::endl;
+        std::cout << KYEL "\nTrying to create invalid forms:" KNOR << std::endl;
         Form invalidHigh("TooHigh", 0, 1);
     }
     catch(std::exception &e)
@@ -92,9 +107,3 @@ void testBureaucratAndForm()
     }
 }
 
-int main()
-{
-    makeHeader("MODULE 05 - Exercise 01 - Form up, maggots!");
-
-    testBureaucratAndForm();
-}

@@ -14,16 +14,31 @@
 
 void makeHeader(const std::string &moduleText);
 void makeFish(int lineLength);
+void testCreateBureaucrats();
+void testIncrementBureaucrat(Bureaucrat &bure1);
+void testDecrementBureaucrat(Bureaucrat &bure2);
+void testInvalidBureaucrats();
 
 int main()
 {
-
   makeHeader("MODULE 05 - Exercise 00 - Mommy, when I grow up, I want to be a "
              "bureaucrat!");
 
+  testCreateBureaucrats();
+
+  Bureaucrat bure1("Eneko", 2);
+  Bureaucrat bure2("Elian", 149);
+
+  testIncrementBureaucrat(bure1);
+  testDecrementBureaucrat(bure2);
+  testInvalidBureaucrats();
+}
+
+void testCreateBureaucrats()
+{
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  std::cout << " Eneko and Elian will be created" << std::endl;
+  std::cout << " Eneko y Elian serán creados" << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
   Bureaucrat bure1("Eneko", 2);
@@ -31,10 +46,13 @@ int main()
 
   std::cout << bure1 << std::endl;
   std::cout << bure2 << std::endl;
+}
 
+void testIncrementBureaucrat(Bureaucrat &bure1)
+{
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  std::cout << " Eneko is going to be ascended 2 times" << std::endl;
+  std::cout << " Eneko va a ser ascendido 2 veces" << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
   try
@@ -48,10 +66,13 @@ int main()
   {
     std::cerr << e.what() << std::endl;
   }
+}
 
+void testDecrementBureaucrat(Bureaucrat &bure2)
+{
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  std::cout << " Elian is going to be descended 2 times " << std::endl;
+  std::cout << " Elian va a ser descendido 2 veces " << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
 
@@ -66,9 +87,13 @@ int main()
   {
     std::cerr << e.what() << std::endl;
   }
+}
+
+void testInvalidBureaucrats()
+{
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  std::cout << " Trying to create wrong bureaucrats (xabier 0 ; Unai 151) "
+  std::cout << " Intentando crear burócratas incorrectos (Xabier 0 ; Unai 151) "
             << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
@@ -77,6 +102,7 @@ int main()
   std::cout << bure3 << std::endl;
   std::cout << bure4 << std::endl;
 }
+
 void makeFish(int lineLength)
 {
   lineLength = lineLength - 16;
@@ -94,6 +120,7 @@ void makeFish(int lineLength)
             << std::endl;
   std::cout << std::endl;
 }
+
 void makeHeader(const std::string &moduleText)
 {
   int lineLength = moduleText.length() + 2; // Adjust for extra spaces
