@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include <typeinfo>
 
 /*
 dynamic_cast es un operador en C++ que se utiliza para convertir punteros o
@@ -35,13 +34,14 @@ Base *generate()
   else
     return new C();
 }
+
 void identify(Base *p)
 {
-  if(dynamic_cast<A *>(p))
+  if(dynamic_cast<A *>(p) != NULL)
     std::cout << "\033[1;31mA\033[0m" << std::endl; // Red
-  else if(dynamic_cast<B *>(p))
+  else if(dynamic_cast<B *>(p) != NULL)
     std::cout << "\033[1;32mB\033[0m" << std::endl; // Green
-  else if(dynamic_cast<C *>(p))
+  else if(dynamic_cast<C *>(p) != NULL)
     std::cout << "\033[1;34mC\033[0m" << std::endl; // Blue
   else
     std::cout << "\033[1;33mUnknown\033[0m" << std::endl; // Yellow
@@ -53,28 +53,27 @@ void identify(Base &p)
   {
     (void)dynamic_cast<A &>(p);
     std::cout << "\033[1;31mA\033[0m" << std::endl; // Red
+    return;
   }
-  catch(std::bad_cast &)
-  {
-  }
+  catch(...){}
 
   try
   {
     (void)dynamic_cast<B &>(p);
     std::cout << "\033[1;32mB\033[0m" << std::endl; // Green
+    return;
   }
-  catch(std::bad_cast &)
-  {
-  }
+  catch(...){}
 
   try
   {
     (void)dynamic_cast<C &>(p);
     std::cout << "\033[1;34mC\033[0m" << std::endl; // Blue
+    return;
   }
-  catch(std::bad_cast &)
-  {
-  }
+  catch(...){}
+
+  std::cout << "\033[1;33mUnknown\033[0m" << std::endl; // Yellow
 }
 
 int main(void)
