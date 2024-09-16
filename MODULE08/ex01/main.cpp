@@ -80,6 +80,39 @@ void test_span_full_exception() {
         std::cerr << e.what() << std::endl;
     }
 }   
+
+void test_insertNumbers() {
+    try {
+        Span sp(10);
+        std::vector<int> nuevosNumeros;
+
+        // Agregar números al vector
+        for (int i = 1; i <= 5; ++i) {
+            nuevosNumeros.push_back(i * 10);
+        }
+
+        std::cout << "\033[34m";
+        std::cout << "Añadiendo múltiples números usando addNumbers." << std::endl;
+        std::cout << "\033[0m";
+
+        // Usar la nueva función addNumbers para agregar múltiples números
+        sp.insertNumbers(nuevosNumeros);
+
+        // Mostrar los números agregados
+        std::cout << "Números en el Span: ";
+        for (size_t i = 0; i < nuevosNumeros.size(); ++i) {
+            std::cout << nuevosNumeros[i] << " ";
+        }
+        std::cout << std::endl;
+
+        // Mostrar los spans calculados
+        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+    }
+}
 int main() {
     test_separator("Test Basic Span");
     test_basic_span();
@@ -91,5 +124,8 @@ int main() {
     test_subject_cases();
     test_separator("Test Span Full Exception");
     test_span_full_exception();
+
+    test_separator("Test Insert Numbers");
+    test_insertNumbers();
     return 0;
 }

@@ -33,3 +33,10 @@ int Span::longestSpan() const {
     int max_number = *std::max_element(numbers.begin(), numbers.end());
     return max_number - min_number;
 }
+
+void Span::insertNumbers(const std::vector<int>& moreNumbers) {
+    if (numbers.size() + moreNumbers.size() > max_size) {
+        throw std::out_of_range("\033[31mNo se puede agregar estos números, el span excedería el tamaño máximo\033[0m");
+    }
+    numbers.insert(numbers.end(), moreNumbers.begin(), moreNumbers.end());
+}
