@@ -15,24 +15,25 @@
 ShrubberyCreationForm::ShrubberyCreationForm(void)
     : AForm("ShrubberyCreationForm", 145, 137), _target("")
 {
-    std::cout << "ShrubberyCreationForm default constructor called"
+    std::cout << KBLA "ShrubberyCreationForm default constructor called"
               << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
     : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
-    std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+    std::cout << KBLA "ShrubberyCreationForm constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-    std::cout << "ShrubberyCreationForm destructor called" << std::endl;
+    std::cout << KBLA "ShrubberyCreationForm destructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
     : AForm(other), _target(other._target)
 {
-    std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
+    std::cout << KBLA "ShrubberyCreationForm copy constructor called"
+              << std::endl;
 }
 
 ShrubberyCreationForm &

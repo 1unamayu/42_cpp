@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "Intern.hpp"
-#include "AForm.hpp"
 
 void makeFish(int lineLength)
 {
@@ -52,7 +52,10 @@ void makeHeader(const std::string &moduleText)
 }
 void printTestDescription(const std::string &description)
 {
-    std::cout << KYEL << "\n============================================== " << description << " ======================================================" << KNOR << std::endl;
+    std::cout << KYEL << "\n============================================== "
+              << description
+              << " ======================================================"
+              << KNOR << std::endl;
 }
 
 void testIntern()
@@ -62,13 +65,14 @@ void testIntern()
     Intern someRandomIntern;
 
     printTestDescription("Creating Boss Bureacrat");
-   
+
     Bureaucrat boss("Boss", 1);
 
-    std::cout
-        << KBLU
-        << "======================================================== RobotomyRequestForm ===================================================="
-        << KNOR << std::endl;
+    std::cout << KBLU
+              << "======================================================== "
+                 "RobotomyRequestForm "
+                 "===================================================="
+              << KNOR << std::endl;
     AForm *rrf;
     rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
     if(rrf)
@@ -79,10 +83,11 @@ void testIntern()
         boss.executeForm(*rrf);
         delete rrf; // Add this line
     }
-    std::cout << KBLU
-              << "======================================== ShrubberyCreationForm "
-                 "========================================"
-              << KNOR << std::endl;
+    std::cout
+        << KBLU
+        << "======================================== ShrubberyCreationForm "
+           "========================================"
+        << KNOR << std::endl;
     AForm *scf;
 
     scf = someRandomIntern.makeForm("ShrubberyCreationForm", "Garden");
@@ -101,18 +106,22 @@ void testIntern()
 
     if(ppf)
     {
-        std::cout << KBLU
-                  << "======================================================== PresidentialPardonForm "
-                     "============================================================"
-                  << KNOR << std::endl;
+        std::cout
+            << KBLU
+            << "======================================================== "
+               "PresidentialPardonForm "
+               "============================================================"
+            << KNOR << std::endl;
         std::cout << *ppf << std::endl;
         boss.signForm(*ppf);
         boss.executeForm(*ppf);
         delete ppf;
     }
-    std::cout << KBLU
-              << "================================================== NonExistentForm ===================================================="
-              << KNOR << std::endl;
+    std::cout
+        << KBLU
+        << "================================================== NonExistentForm "
+           "===================================================="
+        << KNOR << std::endl;
     AForm *nonExistentForm;
     nonExistentForm = someRandomIntern.makeForm("non existent", "Nobody");
     if(nonExistentForm)
@@ -126,9 +135,11 @@ void testIntern()
         std::cout << "Intern couldn't create the non-existent form."
                   << std::endl;
     }
-    std::cout << KRED
-              << "============================================================== CLOSING ========================================================"
-              << KNOR << std::endl;
+    std::cout
+        << KRED
+        << "============================================================== "
+           "CLOSING ========================================================"
+        << KNOR << std::endl;
 }
 
 int main()
