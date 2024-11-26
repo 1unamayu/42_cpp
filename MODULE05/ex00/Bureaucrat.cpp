@@ -9,16 +9,11 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
   std::cout << KBLA "BUREAUCRAT.Default constructor called" KNOR << std::endl;
   if(grade < 1)
   {
-    grade = 1;
-    std::cout << KBLA
-        "BUREAUCRAT.Constructor Grade too low. Grade set to 1" KNOR
-              << std::endl;
+    throw Bureaucrat::GradeTooHighException();
   }
   if(grade > 150)
   {
-    grade = 150;
-    std::cout << KBLA "BUREAUCRAT.Consturctor Grade too high. Grade set to 150"
-              << std::endl;
+    throw Bureaucrat::GradeTooLowException();
   }
   _grade = grade;
 }
@@ -69,13 +64,13 @@ void Bureaucrat::incrementGrade()
 {
   _grade = _grade - 1;
   if(_grade < 1)
-    throw Bureaucrat::GradeTooLowException();
+    throw Bureaucrat::GradeTooHighException();
 }
 void Bureaucrat::decrementGrade()
 {
   _grade = _grade + 1;
   if(_grade > 150)
-    throw Bureaucrat::GradeTooHighException();
+    throw Bureaucrat::GradeTooLowException();
 }
 
 /*

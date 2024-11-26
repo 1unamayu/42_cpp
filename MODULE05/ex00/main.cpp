@@ -97,10 +97,22 @@ void testInvalidBureaucrats()
             << std::endl;
   std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             << std::endl;
-  Bureaucrat bure3("Xabier", 0);
-  Bureaucrat bure4("Unai", 151);
-  std::cout << bure3 << std::endl;
-  std::cout << bure4 << std::endl;
+  try
+  {
+    Bureaucrat bure3("Xabier", 0);
+  }
+  catch(std::exception const &e)
+  {
+    std::cerr << e.what() << std::endl;
+  }
+  try
+  {
+    Bureaucrat bure4("Unai", 151);
+  }
+  catch(std::exception const &e)
+  {
+    std::cerr << e.what() << std::endl;
+  }
 }
 
 void makeFish(int lineLength)
