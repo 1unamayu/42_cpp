@@ -177,8 +177,14 @@ void ScalarConverter::convert(std::string str)
   {
     std::cout << "  char: impossible" << std::endl;
     std::cout << "   int: impossible" << std::endl;
-    std::cout << " float: " << str << std::endl;
-    std::cout << "double: " << str << std::endl;
+    if(str == "nanf" || str == "+inff" || str == "-inff")
+      std::cout << " float: " << str << std::endl;
+    else
+      std::cout << " float: " << str << "f" << std::endl;
+    if(str == "nan" || str == "+inf" || str == "-inf")
+      std::cout << "double: " << str << std::endl;
+    else
+      std::cout << "double: " << str.substr(0, str.length() - 1) << std::endl;
     return;
   }
   if(_isChar(str))

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = convert
 SRCS     := main.cpp ScalarConverter.cpp
 OBJS_DIR := .obj/
 OBJS     := $(SRCS:.cpp=.o)
