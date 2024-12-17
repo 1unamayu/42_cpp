@@ -2,6 +2,59 @@
 #include <iostream>
 #include <list>
 
+void test_separator(const std::string &separator);
+void testPushAndTop(MutantStack<int> &mstack);
+void testPopAndSize(MutantStack<int> &mstack);
+void testMultiplePushes(MutantStack<int> &mstack);
+void testIteration(MutantStack<int> &mstack);
+void testConstIteration(const MutantStack<int> &mstack);
+void testReverseIteration(MutantStack<int> &mstack);
+void testConstReverseIteration(const MutantStack<int> &mstack);
+void testEmptyStack(MutantStack<int> &mstack);
+void testClearStack(MutantStack<int> &mstack);
+void test_subject(void);
+void test_subject_list(void);
+
+int main()
+{
+  MutantStack<int> mstack;
+  test_separator("Push and Top");
+  testPushAndTop(mstack);
+  test_separator("Pop and Size");
+  testPopAndSize(mstack);
+  test_separator("Multiple Pushes");
+  testMultiplePushes(mstack);
+  test_separator("Iteration");
+  testIteration(mstack);
+  test_separator("Reverse Iteration");
+  testReverseIteration(mstack);
+  test_separator("Empty Stack");
+  testEmptyStack(mstack);
+  test_separator("Clear Stack");
+  testClearStack(mstack);
+  test_separator("Empty Stack");
+  testEmptyStack(mstack);
+
+  // Pruebas con una pila constante
+  mstack.push(42);
+  mstack.push(41);
+  mstack.push(54);
+  mstack.push(44);
+  mstack.push(55);
+  const MutantStack<int> const_mstack = mstack;
+
+  test_separator("Const Iteration");
+  testConstIteration(const_mstack);
+  test_separator("Const Reverse Iteration");
+  testConstReverseIteration(const_mstack);
+
+  test_separator("Subject");
+  test_subject();
+  test_separator("Subject with list");
+  test_subject_list();
+
+  return 0;
+}
 void testPushAndTop(MutantStack<int> &mstack)
 {
   std::cout << "\033[33m"; // Cambiar color a amarillo
@@ -166,44 +219,4 @@ void test_subject_list()
    
     
   
-}
-int main()
-{
-  MutantStack<int> mstack;
-  test_separator("Push and Top");
-  testPushAndTop(mstack);
-  test_separator("Pop and Size");
-  testPopAndSize(mstack);
-  test_separator("Multiple Pushes");
-  testMultiplePushes(mstack);
-  test_separator("Iteration");
-  testIteration(mstack);
-  test_separator("Reverse Iteration");
-  testReverseIteration(mstack);
-  test_separator("Empty Stack");
-  testEmptyStack(mstack);
-  test_separator("Clear Stack");
-  testClearStack(mstack);
-  test_separator("Empty Stack");
-  testEmptyStack(mstack);
-
-  // Pruebas con una pila constante
-  mstack.push(42);
-  mstack.push(41);
-  mstack.push(54);
-  mstack.push(44);
-  mstack.push(55);
-  const MutantStack<int> const_mstack = mstack;
-
-  test_separator("Const Iteration");
-  testConstIteration(const_mstack);
-  test_separator("Const Reverse Iteration");
-  testConstReverseIteration(const_mstack);
-
-  test_separator("Subject");
-  test_subject();
-  test_separator("Subject with list");
-  test_subject_list();
-
-  return 0;
 }

@@ -23,8 +23,25 @@ Si la conversión es válida, dynamic_cast devuelve una referencia del tipo de
 destino. Si la conversión no es válida, lanza una excepción std::bad_cast.
 
 */
+
+Base *generate(void);
+void identify(Base *p);
+void identify(Base &p);
+
+int main(void)
+{
+  Base *base = generate();
+  std::cout << "  Identifying using pointer: ";
+  identify(base);
+  std::cout << "Identifying using reference: ";
+  identify(*base);
+  delete base;
+  return 0;
+}
+
 Base *generate()
 {
+  std::cout << "Generating a random Base object..." << std::endl;
   srand(time(0));
   int random = rand() % 3;
   if(random == 0)
@@ -76,13 +93,3 @@ void identify(Base &p)
   std::cout << "\033[1;33mUnknown\033[0m" << std::endl; // Yellow
 }
 
-int main(void)
-{
-  Base *base = generate();
-  std::cout << "  Identifying using pointer: ";
-  identify(base);
-  std::cout << "Identifying using reference: ";
-  identify(*base);
-  delete base;
-  return 0;
-}

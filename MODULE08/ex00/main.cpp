@@ -3,6 +3,22 @@
 #include <list>
 #include <vector>
 
+void test_separator(const std::string &separator);
+void testEasyFind_1(void);
+void testEasyFind_2(void);
+
+int main()
+{
+  test_separator(
+      "------------------ Test easyfind with int vector ------------------");
+  testEasyFind_1();
+  test_separator(
+      "------------------ Test easyfind with char vector ------------------");
+  testEasyFind_2();
+
+
+  return 0;
+}
 void testEasyFind_1()
 {
   std::vector<int> vec;
@@ -22,9 +38,9 @@ void testEasyFind_1()
   try
   {
     std::cout << "\033[33mBuscando 3...\033[0m" << std::endl;
-    std::vector<int>::iterator result = easyfind(vec, 3);
+    std::vector<int>::iterator result = easyfind(vec, 1);
     std::cout << "\033[32mElemento 3 encontrado en la posición: "
-              << (result - vec.begin()) << "\033[0m" << std::endl;
+              << (result - vec.begin()) + 1 << "\033[0m" << std::endl;
   }
   catch(const NotFoundException &e)
   {
@@ -36,7 +52,7 @@ void testEasyFind_1()
     std::cout << "\033[33mBuscando 10...\033[0m" << std::endl;
     std::vector<int>::iterator result = easyfind(vec, 10);
     std::cout << "\033[32mElemento 10 encontrado en la posición: "
-              << (result - vec.begin()) << "\033[0m" << std::endl;
+              << (result - vec.begin()) + 1 << "\033[0m" << std::endl;
   }
   catch(const NotFoundException &e)
   {
@@ -65,7 +81,7 @@ void testEasyFind_2()
     std::cout << "\033[33mBuscando 'c'...\033[0m" << std::endl;
     std::list<char>::iterator result = easyfind(lst, 'c');
     std::cout << "\033[32mElemento 'c' encontrado en la posición: "
-              << std::distance(lst.begin(), result) << "\033[0m" << std::endl;
+              << std::distance(lst.begin(), result) + 1 << "\033[0m" << std::endl;
   }
   catch(const NotFoundException &e)
   {
@@ -93,16 +109,4 @@ void test_separator(const std::string &separator)
   linea.replace(inicio, separator.length(), separator);
   std::cout << linea << std::endl;
   std::cout << "\033[0m";
-}
-int main()
-{
-  test_separator(
-      "------------------ Test easyfind with int vector ------------------");
-  testEasyFind_1();
-  test_separator(
-      "------------------ Test easyfind with char vector ------------------");
-  testEasyFind_2();
-
-
-  return 0;
 }
