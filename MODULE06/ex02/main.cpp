@@ -42,7 +42,7 @@ int main(void)
 Base *generate()
 {
   std::cout << "Generating a random Base object..." << std::endl;
-  srand(time(0));
+  std::srand(static_cast<unsigned int>(std::time(NULL)));
   int random = rand() % 3;
   if(random == 0)
     return new A();
