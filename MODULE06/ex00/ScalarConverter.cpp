@@ -13,7 +13,7 @@
 #include "ScalarConverter.hpp"
 #include <iomanip>
 #include <string>
-
+#include <limits.h>
 // Static member variables initialization
 
 std::string ScalarConverter::_literal;
@@ -199,36 +199,51 @@ void ScalarConverter::convert(std::string str)
   if(_isInt(str))
   {
     std::istringstream iss(str);
-    int value;
-    iss >> value;
-    if(value > 31 && value < 127)
-      std::cout << "  char: '" << static_cast<char>(value) << "'" << std::endl;
+
+    float temp;
+    iss >> temp;
+    
+    if(temp > INT_MAX || temp < INT_MIN)
+    {
+        std::cout << "  char: impossible" << std::endl;
+        std::cout << "   int: impossible" << std::endl;
+        std::cout << " float: " << static_cast<float>(temp) << "f" << std::endl;
+        std::cout << "double: " << static_cast<double>(temp) << std::endl;
+        return;
+    }
+    if(temp > 31 && temp < 127)
+      std::cout << "  char: '" << static_cast<char>(temp) << "'" << std::endl;
     else
       std::cout << "  char: Non displayable" << std::endl;
-    std::cout << "   int: " << value << std::endl;
+    std::cout << "   int: " << temp << std::endl;
     std::cout << " float: " << std::fixed << std::setprecision(1)
-              << static_cast<float>(value) << "f" << std::endl;
+              << static_cast<float>(temp) << "f" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1)
-              << static_cast<double>(value) << std::endl;
+              << static_cast<double>(temp) << std::endl;
     return;
   }
   if(_isFloat(str))
   {
-    std::istringstream iss(str);
-    int value;
-    
+    std::string numStr = str;
+    if(str[str.length() - 1] == 'f')
+        numStr = str.substr(0, str.length() - 1);
+        
+    std::istringstream iss(numStr);
+    float value;
     iss >> value;
     
     if(value > 31 && value < 127)
-      std::cout << "  char: '" << static_cast<char>(value) << "'" << std::endl;
+        std::cout << "  char: '" << static_cast<char>(value) << "'" << std::endl;
     else
-      std::cout << "  char: Non displayable" << std::endl;
+        std::cout << "  char: Non displayable" << std::endl;
 
-    std::cout << "   int: " << value << std::endl;
-    if(str[str.length() - 1] != 'f')
-      str += 'f';
-    std::cout << " float: " << str << std::endl;
-    std::cout << "double: " << str.substr(0, str.length() - (str[str.length() - 1] == 'f' ? 1 : 0)) << std::endl;
+    if(value > INT_MAX || value < INT_MIN)
+        std::cout << "   int: impossible" << std::endl;
+    else
+        std::cout << "   int: " << static_cast<int>(value) << std::endl;
+
+    std::cout << " float: " << std::fixed << std::setprecision(1) << value << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value) << std::endl;
     
     return;
   }
