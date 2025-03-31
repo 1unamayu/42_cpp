@@ -28,12 +28,18 @@ bool RPN::ultimoCaracterEsOperador(const std::string& s)
 
 void RPN::evaluate(std::string s)
 {
-    std::cout << "\033[33mEvaluating: " << "\033[0m" << s << std::endl;
-    if (!ultimoCaracterEsOperador(s))
+    if (s.empty() || s.find_first_not_of("0123456789+-*/ ") == std::string::npos)
     {
-        std::cerr << "\033[1;31mError: Invalid operation last character is not an operator.\033[0m" << std::endl;
+        std::cerr << "Error" << std::endl;
         return;
     }
+
+    if (!ultimoCaracterEsOperador(s))
+    {
+        std::cerr << "Error" << std::endl;
+        return;
+    }
+
     for (size_t i = 0; i < s.length(); ++i)
     {
         if (std::isdigit(s[i]))
@@ -45,7 +51,7 @@ void RPN::evaluate(std::string s)
         {
             if (_stack.size() < 2)
             {
-                std::cerr << "\033[1;31mError: Invalid operation not enough operands.\033[0m" << std::endl;
+                std::cerr << "Error" << std::endl;
                 return;
             }
             
@@ -69,7 +75,7 @@ void RPN::evaluate(std::string s)
                 case '/':
                     if (b == 0)
                     {
-                        std::cerr << "\033[1;31mError: Division by zero.\033[0m" << std::endl;
+                        std::cerr << "Error" << std::endl;
                         return;
                     }
                     resultado = a / b;
@@ -77,16 +83,16 @@ void RPN::evaluate(std::string s)
             }
             
             _stack.push(resultado);
-            
-        } else  if (s[i] == ' ')
+        }
+        else if (s[i] == ' ')
         {
             continue;
         }
         else
         {
-            std::cerr << "\033[1;31mError: Invalid character.\033[0m" << std::endl;
+            std::cerr << "Error" << std::endl;
             return;
         }
     }
-    std::cout << "\033[1;32mResult: " << "\033[0m"<< _stack.top()  << std::endl;
+    std::cout << _stack.top() << std::endl;
 }

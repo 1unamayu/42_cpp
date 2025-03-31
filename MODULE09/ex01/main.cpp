@@ -1,16 +1,15 @@
-
 #include <iostream>
 #include "RPN.hpp"
-int main(int argn, char *argv[])
+
+int main(int argc, char *argv[])
 {
-    if (argn != 2)
+    if (argc != 2)
     {
-        std::cerr << "\033[1;31mError: Invalid number of arguments\033[0m" << std::endl;
+        std::cerr << "Error" << std::endl;
         return 1;
     }
-    std::string s = argv[1];
-     RPN rpn;
- 
-    rpn.evaluate(s);
+    
+    RPN rpn;
+    rpn.evaluate(argv[1]);
     return 0;
 }
