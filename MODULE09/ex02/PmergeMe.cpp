@@ -2,7 +2,6 @@
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
-
   // Parsear argumentos y llenar los contenedores
   for(int i = 1; i < argc; ++i)
   {
@@ -11,6 +10,7 @@ PmergeMe::PmergeMe(int argc, char **argv)
     {
       _vecNumbers.clear();
       _deqNumbers.clear();
+      std::cout << "Error" << std::endl;
       return;
     }
     _vecNumbers.push_back(num);
@@ -64,14 +64,14 @@ void PmergeMe::printDequeNumbers()
 {
   if (_deqNumbers.size() <= 10)
   {
-    for (std::deque<int>::size_type i = _deqNumbers.size() - 5; i < _deqNumbers.size(); ++i)
+    for (std::deque<int>::iterator it = _deqNumbers.begin(); it != _deqNumbers.end(); ++it)
     {
-      std::cout << " " << _deqNumbers[i];
+      std::cout << " " << *it;
     }
   }
   else
   {
-    for (int i = 0; i < 5; ++i)
+    for (std::deque<int>::size_type i = 0; i < 5; ++i)
     {
       std::cout << " " << _deqNumbers[i];
     }
@@ -84,15 +84,13 @@ void PmergeMe::printDequeNumbers()
   std::cout << std::endl;
 }
 
-
-
 void PmergeMe::mergeInsertSortVector()
 {
-  const int K = 5; // Umbral para cambiar a inserción
+  const int K = 10; // Threshold for switching to insertion sort
   std::vector<int> &arr = _vecNumbers;
   int n = arr.size();
 
-  // Ordenación por inserción para subarreglos pequeños
+  // Insertion sort for small subarrays
   for(int i = 0; i < n; i += K)
   {
     int right = std::min(i + K - 1, n - 1);
@@ -109,18 +107,34 @@ void PmergeMe::mergeInsertSortVector()
     }
   }
 
-  // Fusión de subarreglos ordenados
+  // Merge sorted subarrays
   for(int size = K; size < n; size = 2 * size)
   {
     for(int left = 0; left < n; left += 2 * size)
     {
-      int mid = left + size - 1;
+      int mid = std::min(left + size - 1, n - 1);
       int right = std::min(left + 2 * size - 1, n - 1);
 
-      if(mid < right)
+      if(mid < n - 1)
       {
-        std::inplace_merge(arr.begin() + left, arr.begin() + mid + 1,
-                           arr.begin() + right + 1);
+        std::vector<int> temp(right - left + 1);
+        int i = left, j = mid + 1, k = 0;
+
+        while(i <= mid && j <= right)
+        {
+          if(arr[i] <= arr[j])
+            temp[k++] = arr[i++];
+          else
+            temp[k++] = arr[j++];
+        }
+
+        while(i <= mid)
+          temp[k++] = arr[i++];
+        while(j <= right)
+          temp[k++] = arr[j++];
+
+        for(int i = 0; i < k; i++)
+          arr[left + i] = temp[i];
       }
     }
   }
@@ -138,11 +152,11 @@ int PmergeMe::getDequeSize()
 
 void PmergeMe::mergeInsertSortDeque()
 {
-  const int K = 5; // Umbral para cambiar a inserción
+  const int K = 10; // Threshold for switching to insertion sort
   std::deque<int> &arr = _deqNumbers;
   int n = arr.size();
 
-  // Ordenación por inserción para subarreglos pequeños
+  // Insertion sort for small subarrays
   for(int i = 0; i < n; i += K)
   {
     int right = std::min(i + K - 1, n - 1);
@@ -159,18 +173,34 @@ void PmergeMe::mergeInsertSortDeque()
     }
   }
 
-  // Fusión de subarreglos ordenados
+  // Merge sorted subarrays
   for(int size = K; size < n; size = 2 * size)
   {
     for(int left = 0; left < n; left += 2 * size)
     {
-      int mid = left + size - 1;
+      int mid = std::min(left + size - 1, n - 1);
       int right = std::min(left + 2 * size - 1, n - 1);
 
-      if(mid < right)
+      if(mid < n - 1)
       {
-        std::inplace_merge(arr.begin() + left, arr.begin() + mid + 1,
-                           arr.begin() + right + 1);
+        std::deque<int> temp(right - left + 1);
+        int i = left, j = mid + 1, k = 0;
+
+        while(i <= mid && j <= right)
+        {
+          if(arr[i] <= arr[j])
+            temp[k++] = arr[i++];
+          else
+            temp[k++] = arr[j++];
+        }
+
+        while(i <= mid)
+          temp[k++] = arr[i++];
+        while(j <= right)
+          temp[k++] = arr[j++];
+
+        for(int i = 0; i < k; i++)
+          arr[left + i] = temp[i];
       }
     }
   }
