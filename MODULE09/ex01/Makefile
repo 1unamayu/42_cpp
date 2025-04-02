@@ -59,3 +59,27 @@ author:
 
 format:
 	@clang-format -i -style="{BasedOnStyle: LLVM,IndentWidth: 2,ColumnLimit: 80,BreakBeforeBraces: Allman,AllowShortFunctionsOnASingleLine: false,IndentCaseLabels: false,KeepEmptyLinesAtTheStartOfBlocks: true,SpaceBeforeParens: false,SpaceInEmptyParentheses: false,SpacesInAngles: false,TabWidth: 2,UseTab: Never}" *.cpp *.hpp
+
+test:
+	@echo "--------------------------------"
+	@echo "https://paodayag.dev/reverse-polish-notation-js-parser/"
+	@echo "--------------------------------"
+	@./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	@echo "--------------------------------"
+	@./$(NAME) "7 7 * 7 -"
+	@echo "--------------------------------"
+	@./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
+	@echo "--------------------------------"
+	@./$(NAME) "(1 +1)"
+	@echo "--------------------------------"
+	@./$(NAME) "1 2 * 2 / 2 * 2 4 - 9 3 / + 9 - 1 3 * 3 +"
+	@echo "--------------------------------"
+	@./$(NAME) "3 4 + 5"
+	@echo "--------------------------------"
+	@./$(NAME) "4"
+	@echo "--------------------------------"
+	@./$(NAME) "1 2 3"
+	@echo "--------------------------------"
+	@./$(NAME) "1 2 3 +"
+	@echo "--------------------------------"
+	@./$(NAME) "1 2 3 + +"

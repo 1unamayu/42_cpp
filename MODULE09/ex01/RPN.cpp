@@ -14,30 +14,19 @@ bool RPN::esOperadorValido(char c)
     return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
-bool RPN::ultimoCaracterEsOperador(const std::string& s)
-{
-    for (std::string::const_reverse_iterator it = s.rbegin(); it != s.rend(); ++it)
-    {
-        if (*it != ' ')
-        {
-            return esOperadorValido(*it);
-        }
-    }
-    return false;
-}
-
 void RPN::evaluate(std::string s)
 {
-    std::cout << "\033[33mEvaluating: " << "\033[0m" << s << std::endl;
-    if (!ultimoCaracterEsOperador(s))
-    {
-        std::cerr << "\033[1;31mError: Invalid operation last character is not an operator.\033[0m" << std::endl;
-        return;
-    }
+    std::cout << "\033[33mEvaluando: " << "\033[0m" << s << std::endl;
+    
     for (size_t i = 0; i < s.length(); ++i)
     {
         if (std::isdigit(s[i]))
         {
+            if (i + 1 < s.length() && std::isdigit(s[i + 1]))
+            {
+                std::cerr << "\033[1;31mError: only one digit numbers.\033[0m" << std::endl;
+                return;
+            }
             int numero = s[i] - '0';
             _stack.push(numero);
         }
@@ -45,7 +34,7 @@ void RPN::evaluate(std::string s)
         {
             if (_stack.size() < 2)
             {
-                std::cerr << "\033[1;31mError: Invalid operation not enough operands.\033[0m" << std::endl;
+                std::cerr << "\033[1;31mError: not enough operands.\033[0m" << std::endl;
                 return;
             }
             
@@ -69,7 +58,7 @@ void RPN::evaluate(std::string s)
                 case '/':
                     if (b == 0)
                     {
-                        std::cerr << "\033[1;31mError: Division by zero.\033[0m" << std::endl;
+                        std::cerr << "\033[1;31mError: División por cero.\033[0m" << std::endl;
                         return;
                     }
                     resultado = a / b;
@@ -78,15 +67,22 @@ void RPN::evaluate(std::string s)
             
             _stack.push(resultado);
             
-        } else  if (s[i] == ' ')
+        } else if (s[i] == ' ')
         {
             continue;
         }
         else
         {
-            std::cerr << "\033[1;31mError: Invalid character.\033[0m" << std::endl;
+            std::cerr << "\033[1;31mError: Carácter inválido.\033[0m" << std::endl;
             return;
         }
     }
-    std::cout << "\033[1;32mResult: " << "\033[0m"<< _stack.top()  << std::endl;
+    
+    if (_stack.size() != 1)
+    {
+        std::cerr << "\033[1;31mError: Expresión RPN inválida, quedan operandos sin utilizar.\033[0m" << std::endl;
+        return;
+    }
+    
+    std::cout << "\033[1;32mResultado: " << "\033[0m"<< _stack.top() << std::endl;
 }
