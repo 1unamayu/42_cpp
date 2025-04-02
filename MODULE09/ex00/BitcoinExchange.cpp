@@ -100,14 +100,26 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
   {
     std::istringstream iss(linea);
     std::string fecha;
+    std::string valor_str;
     float valor;
     
-    if(std::getline(iss, fecha, '|') && iss >> valor)
+    if(std::getline(iss, fecha, '|') && std::getline(iss, valor_str))
     {
-      // Eliminar espacios en blanco al inicio y final de la fecha
+      // Eliminar espacios en blanco al inicio y final
       fecha.erase(0, fecha.find_first_not_of(" \t"));
       fecha.erase(fecha.find_last_not_of(" \t") + 1);
-
+      
+      valor_str.erase(0, valor_str.find_first_not_of(" \t"));
+      valor_str.erase(valor_str.find_last_not_of(" \t") + 1);
+      
+      // Validar que el valor sea un número válido
+      try {
+        valor = static_cast<float>(std::atof(valor_str.c_str()));
+      } catch (const std::exception& e) {
+        std::cerr << KRED << "Error: valor no numérico => " << linea << "\033[0m" << std::endl;
+        continue;
+      }
+      
       if(!isValideDate(fecha))
       {
         std::cerr << KRED << "Error: invalid date => " << fecha << "\033[0m" << std::endl;
@@ -148,6 +160,10 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 }
 std::string BitcoinExchange::findDate(const std::string &fecha)
 {
+  if (_data.empty()) {
+    return "";
+  }
+  
   std::map<std::string, float>::iterator it = _data.lower_bound(fecha);
 
   if(it == _data.begin() && it->first != fecha)

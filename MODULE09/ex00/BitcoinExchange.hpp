@@ -1,4 +1,3 @@
-
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
@@ -22,7 +21,6 @@ public:
   BitcoinExchange();
   ~BitcoinExchange();
   bool loadData(std::string const &csvFile);
-  void findDate();
   bool readInput(std::string const &inputFile);
 
 private:
