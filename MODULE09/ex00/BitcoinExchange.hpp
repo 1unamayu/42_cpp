@@ -13,6 +13,7 @@
 #define KGRN "\x1B[32m"
 #define KBLU "\x1B[34m"
 #define KNRM "\x1B[0m"
+#define KBLA "\x1B[30m"
 
 /**
  * @brief Bitcoin Exchange Rate Calculator

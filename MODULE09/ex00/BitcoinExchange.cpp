@@ -51,7 +51,7 @@ bool BitcoinExchange::loadData(std::string const &csvFile)
   std::ifstream archivo(csvFile.c_str());
   if (!archivo.is_open())
   {
-    std::cerr << "Error: could not open file " << csvFile << std::endl;
+    std::cerr << KRED << "Error: could not open file " << csvFile << std::endl;
     return false;
   }
 
@@ -60,7 +60,7 @@ bool BitcoinExchange::loadData(std::string const &csvFile)
 
   if (linea != "date,exchange_rate")
   {
-    std::cerr << "Error: invalid CSV format. Expected header: date,exchange_rate" << std::endl;
+    std::cerr << KRED << "Error: invalid CSV format. Expected header: date,exchange_rate" << std::endl;
     return false;
   }
 
@@ -72,19 +72,19 @@ bool BitcoinExchange::loadData(std::string const &csvFile)
 
     if (!std::getline(iss, fecha, ',') || !(iss >> valor))
     {
-      std::cerr << "Error: bad input => " << linea << std::endl;
+      std::cerr << KRED << "Error: bad input => " << linea << std::endl;
       return false;
     }
 
     if (!isValideDate(fecha))
     {
-      std::cerr << "Error: invalid date in database => " << fecha << std::endl;
+      std::cerr << KRED << "Error: invalid date in database => " << fecha << std::endl;
       return false;
     }
 
     if (valor < 0)
     {
-      std::cerr << "Error: negative exchange rate found => " << valor << std::endl;
+      std::cerr << KRED << "Error: negative exchange rate found => " << valor << std::endl;
       return false;
     }
 
@@ -93,7 +93,7 @@ bool BitcoinExchange::loadData(std::string const &csvFile)
 
   if (_data.empty())
   {
-    std::cerr << "Error: no valid data found in database" << std::endl;
+    std::cerr << KRED << "Error: no valid data found in database" << std::endl;
     return false;
   }
 
@@ -106,7 +106,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
   std::ifstream archivo(inputFile.c_str());
   if (!archivo.is_open())
   {
-    std::cerr << "Error: could not open file " << inputFile << std::endl;
+    std::cerr << KRED << "Error: could not open file " << inputFile << std::endl;
     return false;
   }
 
@@ -115,7 +115,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 
   if (linea != "date | value")
   {
-    std::cerr << "Error: invalid input format. Expected header: date | value" << std::endl;
+    std::cerr << KRED << "Error: invalid input format. Expected header: date | value" << std::endl;
     return false;
   }
 
@@ -130,7 +130,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 
     if (!std::getline(iss, fecha, '|') || !(iss >> valor))
     {
-      std::cerr << "Error: bad input => " << linea << std::endl;
+      std::cerr << KRED << "Error: bad input => " << linea << std::endl;
       continue;
     }
 
@@ -140,19 +140,19 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 
     if (!isValideDate(fecha))
     {
-      std::cerr << "Error: bad input => " << fecha << std::endl;
+      std::cerr << KRED << "Error: bad input => " << fecha << std::endl;
       continue;
     }
 
     if (valor < 0)
     {
-      std::cerr << "Error: not a positive number." << std::endl;
+      std::cerr << KRED << "Error: not a positive number." << std::endl;
       continue;
     }
 
     if (valor > 1000)
     {
-      std::cerr << "Error: too large a number." << std::endl;
+      std::cerr << KRED << "Error: too large a number." << std::endl;
       continue;
     }
 
