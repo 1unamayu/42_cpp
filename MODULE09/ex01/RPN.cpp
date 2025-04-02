@@ -18,6 +18,13 @@ void RPN::evaluate(std::string s)
 {
     std::cout << "\033[33mEvaluando: " << "\033[0m" << s << std::endl;
     
+    // Validar que la expresión no esté vacía
+    if (s.empty())
+    {
+        std::cerr << "\033[1;31mError: Expresión vacía.\033[0m" << std::endl;
+        return;
+    }
+    
     for (size_t i = 0; i < s.length(); ++i)
     {
         if (std::isdigit(s[i]))
@@ -73,7 +80,7 @@ void RPN::evaluate(std::string s)
         }
         else
         {
-            std::cerr << "\033[1;31mError: Carácter inválido.\033[0m" << std::endl;
+            std::cerr << "\033[1;31mError: Carácter inválido '" << s[i] << "'.\033[0m" << std::endl;
             return;
         }
     }
