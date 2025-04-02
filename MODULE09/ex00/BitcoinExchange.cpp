@@ -152,7 +152,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 
     if (valor > 1000)
     {
-      std::cerr << KRED << "Error: too large a number." << std::endl;
+      std::cerr << KRED << "Error: too large a number. Maximum value is 1000." << std::endl;
       continue;
     }
 
@@ -169,18 +169,22 @@ std::string BitcoinExchange::findDate(const std::string &fecha)
 {
   std::map<std::string, float>::iterator it = _data.lower_bound(fecha);
 
-  // If the date is before the first entry or after the last entry
-  if (it == _data.begin())
+  // Si la fecha es exactamente la primera entrada o no hay entradas anteriores
+  if (it == _data.begin() && it->first == fecha)
     return it->first;
+  
+  // Si la fecha es antes de la primera entrada o después de la última entrada
   if (it == _data.end())
     return (--it)->first;
-
-  // If exact date found
+  
+  // Si encontramos la fecha exacta
   if (it->first == fecha)
     return it->first;
-
-  // Get the previous date (closest available)
-  --it;
+  
+  // Si la fecha está entre dos entradas, retornamos la anterior
+  if (it != _data.begin())
+    --it;
+  
   return it->first;
 }
 
