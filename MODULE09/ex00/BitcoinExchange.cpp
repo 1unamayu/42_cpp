@@ -94,7 +94,14 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
     return false;
   }
   std::string linea;
-  std::getline(archivo, linea); // Ignorar la primera línea (encabezados)
+  std::getline(archivo, linea); // ignore the first line
+  
+  // check if the first line is "date | value"
+  if (linea != "date | value")
+  {
+    std::cerr << KRED << "Error: the format of the file is incorrect. The first line must be 'date | value'" << "\033[0m" << std::endl;
+    return false;
+  }
 
   while(std::getline(archivo, linea))
   {
@@ -105,14 +112,14 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
     
     if(std::getline(iss, fecha, '|') && std::getline(iss, valor_str))
     {
-      // Eliminar espacios en blanco al inicio y final
+      // Eliminate white spaces at the beginning and end
       fecha.erase(0, fecha.find_first_not_of(" \t"));
       fecha.erase(fecha.find_last_not_of(" \t") + 1);
       
       valor_str.erase(0, valor_str.find_first_not_of(" \t"));
       valor_str.erase(valor_str.find_last_not_of(" \t") + 1);
       
-      // Validar que el valor sea un número válido
+      // Validate that the value is a valid number
       try {
         valor = static_cast<float>(std::atof(valor_str.c_str()));
       } catch (const std::exception& e) {
@@ -168,18 +175,18 @@ std::string BitcoinExchange::findDate(const std::string &fecha)
 
   if(it == _data.begin() && it->first != fecha)
   {
-    // Si estamos al principio y no es exactamente la fecha buscada,
-    // podría significar que la fecha es anterior a cualquier dato disponible
+    // if we are at the beginning and the date is not exactly the date we are looking for,
+    // it could mean that the date is before any data available
     return "";
   }
   else if(it == _data.end())
   {
-    // Si llegamos al final, tomamos el último valor disponible
+    // if we reach the end, take the last available value
     --it;
   }
   else if(it->first != fecha)
   {
-    // Si no es exactamente la fecha buscada, retrocedemos uno
+    // if the date is not exactly the date we are looking for, go back one
     --it;
   }
 
