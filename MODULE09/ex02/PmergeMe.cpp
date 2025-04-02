@@ -2,14 +2,14 @@
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
-  // Parsear argumentos y llenar los contenedores
+  // Parse the arguments and fill the containers
   for(int i = 1; i < argc; ++i)
   {
-    // Verificar si es un número válido
+    // check if the argument is a valid number
     char *endptr;
     long num = strtol(argv[i], &endptr, 10);
     
-    // Verificar si la conversión fue exitosa y si está dentro del rango de int
+    // check if the conversion was successful and if it is within the range of int
     if(*endptr != '\0' || num <= 0 || num > INT_MAX)
     {
       _vecNumbers.clear();
@@ -17,7 +17,7 @@ PmergeMe::PmergeMe(int argc, char **argv)
       return;
     }
     
-    // Verificar duplicados
+    // check for duplicates
     for(size_t j = 0; j < _vecNumbers.size(); ++j)
     {
       if(_vecNumbers[j] == static_cast<int>(num))
