@@ -16,12 +16,12 @@ bool RPN::esOperadorValido(char c)
 
 void RPN::evaluate(std::string s)
 {
-    std::cout << "\033[33mEvaluando: " << "\033[0m" << s << std::endl;
+    std::cout << "\033[33mEvaluating: " << "\033[0m" << s << std::endl;
     
-    // Validar que la expresión no esté vacía
+    // check if the expression is empty
     if (s.empty())
     {
-        std::cerr << "\033[1;31mError: Expresión vacía.\033[0m" << std::endl;
+        std::cerr << "\033[1;31mError: Expression empty.\033[0m" << std::endl;
         return;
     }
     
@@ -65,7 +65,7 @@ void RPN::evaluate(std::string s)
                 case '/':
                     if (b == 0)
                     {
-                        std::cerr << "\033[1;31mError: División por cero.\033[0m" << std::endl;
+                        std::cerr << "\033[1;31mError: Division by zero.\033[0m" << std::endl;
                         return;
                     }
                     resultado = a / b;
@@ -80,14 +80,14 @@ void RPN::evaluate(std::string s)
         }
         else
         {
-            std::cerr << "\033[1;31mError: Carácter inválido '" << s[i] << "'.\033[0m" << std::endl;
+            std::cerr << "\033[1;31mError: Invalid character '" << s[i] << "'.\033[0m" << std::endl;
             return;
         }
     }
     
     if (_stack.size() != 1)
     {
-        std::cerr << "\033[1;31mError: Expresión RPN inválida, quedan operandos sin utilizar.\033[0m" << std::endl;
+        std::cerr << "\033[1;31mError: Invalid RPN expression, there are operands left.\033[0m" << std::endl;
         return;
     }
     
