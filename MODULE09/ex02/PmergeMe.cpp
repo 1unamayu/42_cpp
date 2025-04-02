@@ -2,19 +2,34 @@
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
-
   // Parsear argumentos y llenar los contenedores
   for(int i = 1; i < argc; ++i)
   {
-    int num = atoi(argv[i]);
-    if(num <= 0)
+    // Verificar si es un número válido
+    char *endptr;
+    long num = strtol(argv[i], &endptr, 10);
+    
+    // Verificar si la conversión fue exitosa y si está dentro del rango de int
+    if(*endptr != '\0' || num <= 0 || num > INT_MAX)
     {
       _vecNumbers.clear();
       _deqNumbers.clear();
       return;
     }
-    _vecNumbers.push_back(num);
-    _deqNumbers.push_back(num);
+    
+    // Verificar duplicados
+    for(size_t j = 0; j < _vecNumbers.size(); ++j)
+    {
+      if(_vecNumbers[j] == static_cast<int>(num))
+      {
+        _vecNumbers.clear();
+        _deqNumbers.clear();
+        return;
+      }
+    }
+    
+    _vecNumbers.push_back(static_cast<int>(num));
+    _deqNumbers.push_back(static_cast<int>(num));
   }
 }
 
@@ -64,9 +79,9 @@ void PmergeMe::printDequeNumbers()
 {
   if (_deqNumbers.size() <= 10)
   {
-    for (std::deque<int>::size_type i = _deqNumbers.size() - 5; i < _deqNumbers.size(); ++i)
+    for (std::deque<int>::iterator it = _deqNumbers.begin(); it != _deqNumbers.end(); ++it)
     {
-      std::cout << " " << _deqNumbers[i];
+      std::cout << " " << *it;
     }
   }
   else
@@ -76,7 +91,7 @@ void PmergeMe::printDequeNumbers()
       std::cout << " " << _deqNumbers[i];
     }
     std::cout << " [...]";
-    for (std::deque<int>::size_type i = _deqNumbers.size() - 5; i < _deqNumbers.size(); ++i)
+    for (size_t i = _deqNumbers.size() - 5; i < _deqNumbers.size(); ++i)
     {
       std::cout << " " << _deqNumbers[i];
     }

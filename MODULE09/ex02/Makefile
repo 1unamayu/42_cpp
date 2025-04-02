@@ -61,6 +61,8 @@ format:
 	@clang-format -i -style="{BasedOnStyle: LLVM,IndentWidth: 2,ColumnLimit: 80,BreakBeforeBraces: Allman,AllowShortFunctionsOnASingleLine: false,IndentCaseLabels: false,KeepEmptyLinesAtTheStartOfBlocks: true,SpaceBeforeParens: false,SpaceInEmptyParentheses: false,SpacesInAngles: false,TabWidth: 2,UseTab: Never}" *.cpp *.hpp
 
 test:
+	@echo "$(ORANGE)-----------------------  5000 Numbers -------------------------------------$(RESET)"
+	@./PmergeMe `shuf -i 1-100000 -n 5000 | tr "\n" " "`
 	@echo "$(ORANGE)-----------------------  3000 Numbers -------------------------------------$(RESET)"
 	@./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 	@echo "$(ORANGE)-----------------------  2000 Numbers -------------------------------------$(RESET)"

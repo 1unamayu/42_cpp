@@ -1,4 +1,3 @@
-
 #include "PmergeMe.hpp"
 
 int main(int argc, char *argv[])
@@ -18,14 +17,16 @@ int main(int argc, char *argv[])
   // Imprimir secuencia antes de ordenar
   std::cout << "\033[36mBefore:\033[0m";
   pmergeMe.printVectorNumbers();
-  // Ordenar y medir tiempo con std::vector
+  
+  // Ordenar y medir tiempo con std::vector (incluyendo gestión de datos)
   clock_t startVector = clock();
   pmergeMe.mergeInsertSortVector();
   clock_t endVector = clock();
+  
   std::cout << "\033[34m After:\033[0m";
   pmergeMe.printVectorNumbers();
 
-  // Ordenar y medir tiempo con std::deque
+  // Ordenar y medir tiempo con std::deque (incluyendo gestión de datos)
   clock_t startDeque = clock();
   pmergeMe.mergeInsertSortDeque();
   clock_t endDeque = clock();

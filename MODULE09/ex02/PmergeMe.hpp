@@ -6,6 +6,9 @@
 #include <deque>
 #include <iostream>
 #include <vector>
+#include <climits> // Para INT_MAX
+#include <cstdlib> // Para strtol
+
 class PmergeMe
 {
 public:
