@@ -1,4 +1,3 @@
-
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange()
@@ -29,7 +28,7 @@ bool BitcoinExchange::isValideDate(const std::string &fecha)
   int mes = std::atoi(fecha.substr(5, 2).c_str());
   int dia = std::atoi(fecha.substr(8, 2).c_str());
 
-  if(anio < 1 || mes < 1 || mes > 12 || dia < 1 || dia > 31)
+  if(anio < 2009 || mes < 1 || mes > 12 || dia < 1 || dia > 31)
     return false;
 
   if((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30)
@@ -91,8 +90,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
   std::ifstream archivo(inputFile.c_str());
   if(!archivo.is_open())
   {
-    std::cerr << "Error: no se pudo abrir el archivo " << inputFile
-              << std::endl;
+    std::cerr << KRED << "Error: could not open file " << inputFile << std::endl;
     return false;
   }
   std::string linea;
@@ -103,11 +101,7 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
     std::istringstream iss(linea);
     std::string fecha;
     float valor;
-    // Ignorar la primera línea
-    if(linea.find("date | value") != std::string::npos)
-    {
-      continue;
-    }
+    
     if(std::getline(iss, fecha, '|') && iss >> valor)
     {
       // Eliminar espacios en blanco al inicio y final de la fecha
@@ -116,29 +110,35 @@ bool BitcoinExchange::readInput(std::string const &inputFile)
 
       if(!isValideDate(fecha))
       {
-        std::cerr << "\033[31m" << fecha << " ==> " << valor << " [Error: bad date => " << fecha << "]" << "\033[0m" << std::endl;
+        std::cerr << KRED << "Error: invalid date => " << fecha << "\033[0m" << std::endl;
         continue;
       }
 
       if(valor < 0)
       {
-        std::cerr << "\033[31m" << fecha << " ==> " << valor << " [Error: not a positive number.]" << "\033[0m" << std::endl;
+        std::cerr << KRED << "Error: not a positive number => " << fecha << " | " << valor << "\033[0m" << std::endl;
         continue;
       }
 
       if(valor > 1000)
       {
-        std::cerr << "\033[31m" << fecha << " ==> " << valor << " [Error: too large a number.]" << "\033[0m" << std::endl;
+        std::cerr << KRED << "Error: too large a number => " << fecha << " | " << valor << "\033[0m" << std::endl;
         continue;
       }
 
       _input[fecha] = valor;
       std::string fecha_valida = findDate(fecha);
-      std::cout << fecha << "[" << fecha_valida << "]" << "==>" << valor << "=" << _data[fecha_valida] * valor << std::endl;
+      
+      if (fecha_valida.empty()) {
+        std::cerr << KRED << "Error: no data available for this date => " << fecha << "\033[0m" << std::endl;
+        continue;
+      }
+      
+      std::cout << fecha << " => " << valor << " = " << _data[fecha_valida] * valor << std::endl;
     }
     else
     {
-      std::cerr << "\033[31m" << linea << " [Error: bad input => " << linea << "]" << "\033[0m" << std::endl;
+      std::cerr << KRED << "Error: incorrect format => " << linea << "\033[0m" << std::endl;
     }
   }
 
@@ -150,12 +150,20 @@ std::string BitcoinExchange::findDate(const std::string &fecha)
 {
   std::map<std::string, float>::iterator it = _data.lower_bound(fecha);
 
-  if(it == _data.begin())
+  if(it == _data.begin() && it->first != fecha)
   {
-    return it->first;
+    // Si estamos al principio y no es exactamente la fecha buscada,
+    // podría significar que la fecha es anterior a cualquier dato disponible
+    return "";
   }
-  else if(it == _data.end() || it->first != fecha)
+  else if(it == _data.end())
   {
+    // Si llegamos al final, tomamos el último valor disponible
+    --it;
+  }
+  else if(it->first != fecha)
+  {
+    // Si no es exactamente la fecha buscada, retrocedemos uno
     --it;
   }
 
